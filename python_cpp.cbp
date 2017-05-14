@@ -19,9 +19,6 @@
 				</Linker>
 			</Target>
 		</Build>
-		<Compiler>
-			<Add option="-Wall" />
-		</Compiler>
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<envvars />

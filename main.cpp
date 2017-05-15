@@ -4,6 +4,7 @@
 #include <iostream>
 #define print(arg) {std::cout << arg << std::endl;}
 #define var() auto
+#define start() a(0){}};
 #define ccp const char *
 
 
@@ -14,14 +15,16 @@
 #define lastArg int dummyArg) {class LocalClass{const int a;LocalClass(
 
 
-#define comment /// function start start
-	
-#define start() a(0){}};
+#define comment /// dummy python functions
 
 #define start_dummy_0 ccp start_dummy_0_
 start_dummy_0 = """ ";/* " """
 def start():
 	pass
+
+def var():
+	pass
+	
 end_dummy_3 = """ */
 const char *start_dummy_1 = " """;
 	
@@ -38,6 +41,10 @@ const char *start_dummy_1 = " """;
 def myFuncName(lastArg):
 	start()
 	""" " , //" """
+	var()
+	a = 8;
+	a = 4+7;
+	print(a);
 	print("hay");
 	""" ") //" """
 	

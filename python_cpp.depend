@@ -1,8 +1,0 @@
-# depslib dependency file v1.0
-1494972603 source:/home/william/code/python_cpp/main.cpp
-	"ppp.h"
-
-1494972627 /home/william/code/python_cpp/ppp.h
-	<iostream>
-	<vector>
-

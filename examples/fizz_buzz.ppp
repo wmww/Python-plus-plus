@@ -1,4 +1,4 @@
-#include "ppp.h"
+#include "../ppp.h"
 
 #define comment /// header boilerplate
 

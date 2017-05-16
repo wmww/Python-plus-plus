@@ -3,31 +3,32 @@
 #define comment /// this is a framwork for writing code that is compatible with both C++ and python
 #define comment /// this header can be #included or copied to the top of your source
 
-#define comment /// mscl
-
 #include <iostream>
 #include <vector>
+
+#define comment /// mscl
+
 #define print(arg) {std::cout << arg << std::endl;}
 #define var() auto
 #define ccp const char *
-#define check(in) (in) blockBeforeColonMacro
 #define True true
 #define False false
-
+#define elif else if
 
 #define comment /// block
 
 #define blockBeforeColonMacro {class LocalDummyClass{const int a; LocalDummyClass()
 #define blockAfterColonMacro a(0){}}
 #define block() blockAfterColonMacro
-
+#define check(in) (in) blockBeforeColonMacro
+#define always (true) blockBeforeColonMacro
 
 #define comment /// function
 
 #define funcMacro(head, body) template<typename T1=void, typename T2=void, typename T3=void, typename T4=void, typename T5=void, typename T6=void> auto head; int dummyInt = body}
 #define def funcMacro(
 
-#define comment naming is because the macro name appears in a common error message 
+#define comment //naming is because the macro name appears in a common error message 
 
 #define the_first_arg_is_0_which_is_the_wrong_number_you_idiot() int dummy_arg) blockBeforeColonMacro
 #define the_first_arg_is_1_which_is_the_wrong_number_you_idiot(empty, arg1) int dummy_arg, T1 arg1) blockBeforeColonMacro

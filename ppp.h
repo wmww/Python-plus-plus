@@ -22,10 +22,24 @@
 
 #define comment /// function
 
-#define funcMacro(head, body) auto head; int dummyInt = body}
+#define funcMacro(head, body) template<typename T1=void, typename T2=void, typename T3=void, typename T4=void, typename T5=void, typename T6=void> auto head; int dummyInt = body}
 #define def funcMacro(
-#define lastArgMacro() int dummyArg) blockBeforeColonMacro
-#define last lastArgMacro(
+
+#define firstArgMacro0() int dummy_arg) blockBeforeColonMacro
+#define firstArgMacro1(empty, arg1) int dummy_arg, T1 arg1) blockBeforeColonMacro
+#define firstArgMacro2(empty, arg1, arg2) int dummy_arg, T1 arg1, T2 arg2) blockBeforeColonMacro
+#define firstArgMacro3(empty, arg1, arg2, arg3) int dummy_arg, T1 arg1, T2 arg2, T3 arg3) blockBeforeColonMacro
+#define firstArgMacro4(empty, arg1, arg2, arg3, arg4) int dummy_arg, T1 arg1, T2 arg2, T3 arg3, T4 arg4) blockBeforeColonMacro
+#define firstArgMacro5(empty, arg1, arg2, arg3, arg4, arg5) int dummy_arg, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5) blockBeforeColonMacro
+#define firstArgMacro6(empty, arg1, arg2, arg3, arg4, arg5, arg6) int dummy_arg, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6) blockBeforeColonMacro
+
+#define _0 firstArgMacro0(
+#define _1 firstArgMacro1(
+#define _2 firstArgMacro2(
+#define _3 firstArgMacro3(
+#define _4 firstArgMacro4(
+#define _5 firstArgMacro5(
+#define _6 firstArgMacro6(
 
 
 #define comment /// array

@@ -12,9 +12,14 @@ def Array(dummy): return []
 end_dummy_3 = """ */
 ccp start_dummy_1 = " """;
 
-
-def myFuncName(last):
+def myFuncName(_5, myFirstRealArg, aaa2, abc, xyz, dsjghjdsghfj):
 	block(), 0;
+	
+	print(myFirstRealArg);
+	print(aaa2);
+	print(abc);
+	print(xyz);
+	print(dsjghjdsghfj);
 	
 	var()
 	a = Array(0);
@@ -36,10 +41,10 @@ def myFuncName(last):
 	""" ";
 ) //"""
 
-def run(last):
+def run(_0):
 	block(), 0;
 	
-	myFuncName(0);
+	myFuncName(0, 12, "dsjfhsdkjf", 4.7, true, 9);
 	
 	""" ";
 ) //"""

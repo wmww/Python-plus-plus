@@ -10,20 +10,23 @@
 #define print(arg) {std::cout << arg << std::endl;}
 #define var() auto
 #define ccp const char *
+#define check(in) (in) blockBeforeColonMacro
+
+
+#define comment /// block
+
+#define blockBeforeColonMacro {class LocalDummyClass{const int a; LocalDummyClass()
+#define blockAfterColonMacro a(0){}}
+#define block() blockAfterColonMacro
 
 
 #define comment /// function
 
-#define funcMacro(head, body) auto head; int dummyInt = body;}
+#define funcMacro(head, body) auto head; int dummyInt = body}
 #define def funcMacro(
-#define lastArg int dummyArg) {class LocalDummyClass{const int a; LocalDummyClass(
-#define func() a(0){}}
+#define lastArgMacro() int dummyArg) blockBeforeColonMacro
+#define last lastArgMacro(
 
-
-#define comment /// while loop
-
-#define check(in) (in) {for (int i
-#define block() std::vector<int>()) {}
 
 #define comment /// array
 

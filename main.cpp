@@ -3,7 +3,7 @@
 #define comment /// header boilerplate
 
 #define start_dummy_0 ccp start_dummy_0_
-start_dummy_0 = """ ";/* " """
+start_dummy_0 = """ ";/* """
 def func(): pass
 def var(): pass
 def block(): pass
@@ -12,8 +12,9 @@ def Array(dummy): return []
 end_dummy_3 = """ */
 ccp start_dummy_1 = " """;
 
-def myFuncName(lastArg):
-	func(), 0;
+
+def myFuncName(last):
+	block(), 0;
 	
 	var()
 	a = Array(0);
@@ -29,16 +30,20 @@ def myFuncName(lastArg):
 		block();
 		print(a[i]);
 		i = i + 1;
-		""" ";}//" """
+		""" ";
+	} //"""
 	
-	""" ")//" """
-	
-def run(lastArg):
-	func(), 0;
+	""" ";
+) //"""
+
+def run(last):
+	block(), 0;
 	
 	myFuncName(0);
 	
-	""" ")//" """
+	""" ";
+) //"""
+
 
 #define comment /// footer boilerplate
 end_dummy_0 = """ "; CPP_MAIN; end_dummy_1 = " """;

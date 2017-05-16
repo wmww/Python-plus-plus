@@ -11,6 +11,8 @@
 #define var() auto
 #define ccp const char *
 #define check(in) (in) blockBeforeColonMacro
+#define True true
+#define False false
 
 
 #define comment /// block

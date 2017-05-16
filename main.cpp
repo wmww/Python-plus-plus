@@ -9,6 +9,8 @@ def var(): pass
 def block(): pass
 def check(condition): return condition
 def Array(dummy): return []
+true = True
+false = False
 end_dummy_3 = """ */
 ccp start_dummy_1 = " """;
 

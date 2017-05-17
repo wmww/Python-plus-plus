@@ -1,4 +1,4 @@
-#include "ppp.h"
+#include "../ppp.h"
 
 #define comment /// header boilerplate
 #define start_dummy_0 ccp start_dummy_0_
@@ -14,12 +14,28 @@ null = None
 end_dummy_3 = """ */
 ccp start_dummy_1 = " """;
 
-#define comment // your functions here
-
 def run(_0):
 	block(), 0;
 	
-	#define comment // entry point
+	var()
+	i0 = 1;
+	
+	var()
+	i1 = 0;
+	
+	while check(i0 < 1000):
+		block();
+		
+		var()
+		tmp = i0;
+		
+		i0 = i0 + i1;
+		i1 = tmp;
+		
+		print(i1);
+		
+		""" ";
+	} // """
 	
 	""" ";
 ) // """
@@ -28,5 +44,6 @@ def run(_0):
 #define comment /// footer boilerplate
 end_dummy_0 = """ "; CPP_MAIN; end_dummy_1 = " """;
 end_dummy_2 = """ ";/* " """; run(0); end_dummy_3 = """ */ end_dummy_3 = " """;
+
 
 

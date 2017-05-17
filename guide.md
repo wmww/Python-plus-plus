@@ -161,7 +161,8 @@ Note that the `Array` constructor must be given a value of the type that you wan
 There are a lot of features I want to implement in the future. These include (in no particular order):
 * A standardized print function that gives the same output for common types in both languages
 * Better string support (concatination, converting between other types and strings, etc.)
-* file IO
+* User input
+* File IO
 * For loops (hopefully will take the form `for x in y:`, but not sure if that is possible)
 * Classes
 If you have any feature suggesstions or problems, feel free to open up a GitHub issue.

@@ -11,8 +11,6 @@
 #define print(arg) {std::cout << arg << std::endl;}
 #define var() auto
 #define ccp const char *
-#define True true
-#define False false
 #define elif else if
 
 #define comment /// block

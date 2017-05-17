@@ -1,9 +1,9 @@
 # Python++
-_A framework for writing language-portable code_
+_A framework for cross language development_
 
 ## About
 
-Python++ is a framework for cross language development. Specifically, it is a collection of boilerplate code and guidelines that allows you to write a single program which will produce the same output when compiled with a C++ compiler or run with a Python interpreter. It does this with heavy usage of C style macros as well as numerous hacks of the syntax of both languages. No external transpiler or preprocessor (aside from the standard C/C++ preprocessor) is needed. The exact same Python++ file can be fed in unmodified to a stock C++ compiler and a stock Python interpreter and you will get the same output. Python++ was initially developed by William W Wold for the Stupid Shit Nobody Needs and Terrible Ideas Hackathon 2017.
+Python++ is a framework for creating Python/C++ [polyglots](https://en.wikipedia.org/wiki/Polyglot_(computing)), programs valid in both programming languages. Specifically, it is a collection of boilerplate code and guidelines that allows you to write a single program which will produce the same output when compiled with a C++ compiler or run with a Python interpreter. It does this with heavy usage of C style macros as well as numerous hacks of the syntax of both languages. No external transpiler or preprocessor (aside from the standard C/C++ preprocessor) is needed. The exact same Python++ file can be fed in unmodified to a stock C++ compiler and a stock Python interpreter and you will get the same output. Python++ was initially developed by William W Wold for the Stupid Shit Nobody Needs and Terrible Ideas Hackathon 2017.
 
 ## Overview
 Python++ consists of 4 things:

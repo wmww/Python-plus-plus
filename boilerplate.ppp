@@ -11,6 +11,7 @@ def Array(dummy): return []
 true = True
 false = False
 always = True
+null = None
 end_dummy_3 = """ */
 ccp start_dummy_1 = " """;
 

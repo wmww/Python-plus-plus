@@ -12,6 +12,7 @@
 #define var() auto
 #define ccp const char *
 #define elif else if
+#define null 0
 
 #define comment /// block
 

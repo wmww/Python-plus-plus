@@ -15,7 +15,7 @@ always = True
 end_dummy_3 = """ */
 ccp start_dummy_1 = " """;
 
-def fizzBuzz(_1, iters):
+def fizzBuzz(_3, iters, abc):
 	block(), 0;
 	
 	var()
@@ -56,7 +56,7 @@ def fizzBuzz(_1, iters):
 def run(_0):
 	block(), 0;
 	
-	fizzBuzz(0, 28);
+	fizzBuzz(0, 28, 8);
 	
 	""" ";
 ) //"""

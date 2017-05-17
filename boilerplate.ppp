@@ -3,7 +3,6 @@
 #define comment /// header boilerplate
 #define start_dummy_0 ccp start_dummy_0_
 start_dummy_0 = """ ";/* """
-def func(): pass
 def var(): pass
 def block(): pass
 def check(condition): return condition

@@ -30,4 +30,7 @@ g++ -x c++ -std=c++14 your_source_file.ppp -o output_binary
 ```
 -std=c++14 seems to be default on my system, but better to make it explicit. If you want to use an IDE or a different compiler I'm sure you can figure it out. If you do, feel free to edit this readme with instructions and send in a pull request.
 
+## License
+
+Python++ is licensed under the permissive Do What The Fuck You Want To Public License (WTFPL). See [COPYING](COPYING) for details.
 

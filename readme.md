@@ -28,6 +28,10 @@ g++ -x c++ -std=c++14 your_source_file.ppp -o output_binary
 ```
 -std=c++14 seems to be default on my system, but better to make it explicit. If you want to use an IDE or a different compiler I'm sure you can figure it out. If you do, feel free to edit this readme with instructions and send in a pull request.
 
+__Test Script__
+
+[test.sh](test.sh) is a BASH script that automatically tests the given source code with both Python and C++. You must have Python3 and gcc installed to use it. It reports if the program worked with Python, if it worked with C++ and if the outputs from the two languages match, as well as displaying the output and any error messages.
+
 ## Contributing
 If you add a feature or fix a bug/typo, please send in a pull request.
 

@@ -9,7 +9,7 @@
 #define comment /// mscl
 
 #define print(arg) {std::cout << arg << std::endl;}
-#define var() auto
+#define var auto
 #define ccp const char *
 #define elif else if
 #define null 0
@@ -17,15 +17,15 @@
 #define comment /// block
 
 #define blockBeforeColonMacro {class LocalDummyClass{const int a; LocalDummyClass()
-#define blockAfterColonMacro a(0){}}
-#define block() blockAfterColonMacro
+#define A a(0){}};
 #define check(in) (in) blockBeforeColonMacro
 #define always (true) blockBeforeColonMacro
+#define V }
 
 #define comment /// function
 
-#define funcMacro(head, body) template<typename T1=void, typename T2=void, typename T3=void, typename T4=void, typename T5=void, typename T6=void> auto head; int dummyInt = body}
-#define def funcMacro(
+//#define funcMacro(head, body) template<typename T1=void, typename T2=void, typename T3=void, typename T4=void, typename T5=void, typename T6=void> auto head; int dummyInt = body}
+#define def template<typename T1=void, typename T2=void, typename T3=void, typename T4=void, typename T5=void, typename T6=void> auto
 
 #define comment //naming is because the macro name appears in a common error message 
 
@@ -61,5 +61,7 @@
 #define end_dummy_3 ccp end_dummy_3_
 
 #define CPP_MAIN int main(int argc, char ** argv) {run(0); return 0;}
+
+//#define run(dummy) CPP_MAIN
 
 

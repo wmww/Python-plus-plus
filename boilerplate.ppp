@@ -3,8 +3,10 @@
 #define comment /// header boilerplate
 #define start_dummy_0 ccp start_dummy_0_
 start_dummy_0 = """ ";/* """
-def var(): pass
-def block(): pass
+var = None
+A = None
+V = None
+CPP_MAIN = None
 def check(condition): return condition
 def Array(dummy): return []
 true = True
@@ -16,17 +18,29 @@ ccp start_dummy_1 = " """;
 
 #define comment // your functions here
 
-def run(_0):
-	block(), 0;
+def run(_0):	
+	A
+	
+	var
+	a = 9;
+	
+	if check(a > 12):
+		A
+		print("yes");
+		V
+	elif always:
+		A
+		print("no");
+		V
 	
 	#define comment // entry point
+	print("Hello World!");
 	
-	""" ";
-) // """
+	V
 
 
 #define comment /// footer boilerplate
-end_dummy_0 = """ "; CPP_MAIN; end_dummy_1 = " """;
+CPP_MAIN
 end_dummy_2 = """ ";/* " """; run(0); end_dummy_3 = """ */ end_dummy_3 = " """;
 
 

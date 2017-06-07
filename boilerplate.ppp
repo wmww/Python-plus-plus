@@ -20,22 +20,7 @@ ccp start_dummy_1 = " """;
 
 def run(_0):	
 	A
-	
-	var
-	a = 9;
-	
-	if check(a > 12):
-		A
-		print("yes");
-		V
-	elif always:
-		A
-		print("no");
-		V
-	
 	#define comment // entry point
-	print("Hello World!");
-	
 	V
 
 

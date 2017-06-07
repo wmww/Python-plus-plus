@@ -3,60 +3,53 @@
 #define comment /// This file constantly changes as I test new features. It may or may not be broken at any given time
 
 #define comment /// header boilerplate
-
 #define start_dummy_0 ccp start_dummy_0_
 start_dummy_0 = """ ";/* """
-def func(): pass
-def var(): pass
-def block(): pass
+var = None
+A = None
+V = None
+FOOTER = None
 def check(condition): return condition
 def Array(dummy): return []
 true = True
 false = False
 always = True
+null = None
 end_dummy_3 = """ */
 ccp start_dummy_1 = " """;
 
 def myFuncName(_5, myFirstRealArg, aaa2, abc, xyz, dsjghjdsghfj):
-	block(), 0;
-	
+	A
 	print(myFirstRealArg);
 	print(aaa2);
 	print(abc);
 	print(xyz);
 	print(dsjghjdsghfj);
 	
-	var()
+	var
 	a = Array(0);
 	
 	a.append(3);
 	a.append(9);
 	a.append(147);
 	
-	var()
+	var
 	i = 0;
 	
 	while check(i < len(a)):
-		block();
+		A
 		print(a[i]);
 		i = i + 1;
-		""" ";
-	} //"""
-	
-	""" ";
-) //"""
+		V
+	V
 
 def run(_0):
-	block(), 0;
-	
+	A
 	myFuncName(0, 12, "dsjfhsdkjf", 4.7, true, 9);
-	
-	""" ";
-) //"""
+	V
 
 
 #define comment /// footer boilerplate
-end_dummy_0 = """ "; CPP_MAIN; end_dummy_1 = " """;
-end_dummy_2 = """ ";/* " """; run(0); end_dummy_3 = """ */ end_dummy_3 = " """;
+FOOTER; run(0); V
 
 

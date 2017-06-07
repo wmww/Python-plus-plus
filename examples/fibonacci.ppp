@@ -3,8 +3,10 @@
 #define comment /// header boilerplate
 #define start_dummy_0 ccp start_dummy_0_
 start_dummy_0 = """ ";/* """
-def var(): pass
-def block(): pass
+var = None
+A = None
+V = None
+FOOTER = None
 def check(condition): return condition
 def Array(dummy): return []
 true = True
@@ -15,35 +17,28 @@ end_dummy_3 = """ */
 ccp start_dummy_1 = " """;
 
 def run(_0):
-	block(), 0;
-	
-	var()
+	A
+	var
 	i0 = 1;
 	
-	var()
+	var
 	i1 = 0;
 	
 	while check(i0 < 1000):
-		block();
-		
-		var()
+		A
+		var
 		tmp = i0;
 		
 		i0 = i0 + i1;
 		i1 = tmp;
 		
 		print(i1);
-		
-		""" ";
-	} // """
-	
-	""" ";
-) // """
+		V
+	V
 
 
 #define comment /// footer boilerplate
-end_dummy_0 = """ "; CPP_MAIN; end_dummy_1 = " """;
-end_dummy_2 = """ ";/* " """; run(0); end_dummy_3 = """ */ end_dummy_3 = " """;
+FOOTER; run(0); V
 
 
 

@@ -13,6 +13,7 @@ true = True
 false = False
 always = True
 null = None
+_ = None
 end_dummy_3 = """ */
 ccp start_dummy_1 = " """;
 
@@ -25,6 +26,6 @@ def run(_0):
 
 
 #define comment /// footer boilerplate
-FOOTER; run(0); V
+FOOTER; run(_); V
 
 

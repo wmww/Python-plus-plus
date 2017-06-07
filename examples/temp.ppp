@@ -45,11 +45,11 @@ def myFuncName(_5, myFirstRealArg, aaa2, abc, xyz, dsjghjdsghfj):
 
 def run(_0):
 	A
-	myFuncName(0, 12, "dsjfhsdkjf", 4.7, true, 9);
+	myFuncName(nil, 12, "dsjfhsdkjf", 4.7, true, 9);
 	V
 
 
 #define comment /// footer boilerplate
-FOOTER; run(0); V
+FOOTER; run(nil); V
 
 

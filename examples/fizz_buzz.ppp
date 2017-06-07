@@ -13,6 +13,7 @@ true = True
 false = False
 always = True
 null = None
+_ = None
 end_dummy_3 = """ */
 ccp start_dummy_1 = " """;
 
@@ -46,11 +47,11 @@ def fizzBuzz(_2, iters, abc):
 
 def run(_0):
 	A
-	fizzBuzz(0, 28, 8);
+	fizzBuzz(_, 28, 8);
 	V
 
 
 #define comment /// footer boilerplate
-FOOTER; run(0); V
+FOOTER; run(_); V
 
 

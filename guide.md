@@ -1,13 +1,13 @@
 # Python++ guide
 
-This is a guide to writing in Python++. For general info about Python++ see the [readme](readme.md).
+This is a guide to writing code in Python++. For general info about Python++ see the [readme](readme.md).
 
 ## Boilerplate
 
 There is a significant amount of boilerplate code, some of which must go above and some below your code. Just copy this from [boilerplate.ppp](boilerplate.ppp).
 
 ## Errors
-Depending on what you fuck up, you might get errors in C++, Python or both. Make sure you test with both languages.
+Depending on what you fuck up, you might get errors in C++, Python or both. Make sure you test with both languages. The provided test script is useful for this.
 
 ## Comments
 ```
@@ -15,36 +15,33 @@ Depending on what you fuck up, you might get errors in C++, Python or both. Make
 ```
 
 ## Line Endings
-Semicolons are required (except when they're forbidden) and indentation must be correct. Basically Python++ takes the worst parts of both languages.
+Semicolons are required at the end of statements (except when they're explicitly forbidden).
+
+# Blocks
+Code blocks (functions, ifs, etc) start after a `:`. They are encompassed by `A` and `V` (think vertical angle brackets). Indentation must follow pythons rules.
 
 ## Defining Functions
 ```
 def function_name(_0):
-	block(), 0;
-	
+	A
 	#define comment // your code here
-	
-	""" ";
-) // """
+	V
 ```
 Correct indentation is required. This is for a function with no arguments (technically there is one argument, but it is named different things in C++ and Python so you shouldn't try to use it). To send arguments to a function change the `_0` to the number of arguments. For example:
 ```
 def function_name(_2, first_arg, second_arg):
-	block(), 0;
-	
+	A
 	#define comment // your code here
-	
-	""" ";
-) // """
+	V
 ```
-the `block(), 0;` is always required. the `0` in it doesn't mean anything, so no need to ever change it. Under the hood, templates are always used in C++ so no need to worry about types. You can have at most 6 function arguments (not counting the initial argument count)
+Under the hood, templates are always used in C++ so no need to worry about types. You can have at most 6 function arguments (not counting the initial argument count)
 
 ## Calling Functions
-Calling a function is the same way you call a function in both languages, except that the first argument is a dummy null. For example:
+Calling a function is the same way you call a function in both languages, except that the first argument is a dummy `_`. For example:
 ```
-function_name(null, "hay", 48.9);
+function_name(_, "hay", 48.9);
 ```
-Is how to call the 2nd function above. The `null` is required even if there are no arguments.
+Is how to call the 2nd function above. The `_` is required even if there are no arguments.
 
 ## Boolean values
 In Python++, use `true` and `false` (not capitalized) for Boolean literals.
@@ -59,95 +56,73 @@ Use the `print()` function to print anything to stdout. Currently, the C++ versi
 ## Variables
 Variables are declared in this very specific way:
 ```
-var()
+var
 var_name = inital_val;
 ```
-Note that the indentation of the two lines must be the same, they can not be on the same line, there may not be a semicolon after the `var()` and an initial value is required. Also, choose the initial value wisely, as it determines the type of the variable in C++.
+Note that the indentation of the two lines must be the same, they can not be on the same line, there may not be a semicolon after the `var` and an initial value is required. Also, choose the initial value wisely, as it determines the type of the variable in C++.
 
 ## While Loops
 ```
 while check(should_keep_looping):
-	block();
-	
+	V
 	#define comment // code for each iteration here
-	
-	""" ";
-} // """
+	A
 ```
-In this example, `should_keep_looping` is any expression that returns a boolean. The `check(...)` can be thought of as simply returning the value it is sent. It has no effect on the logic, but is required because macros. `block();` is the same as at the start of a function, except you can omit the `, 0`. Note that the end of the block is similar to the end of a function but `}` is used instead of `)`. A simple `break;` statement can be used anywhere to break out of the loop. Below is an example that uses a loop to print 0-9:
+In this example, `should_keep_looping` is any expression that returns a boolean. The `check(...)` can be thought of as simply returning the value it is sent. It has no effect on the logic, but is required because macros. A simple `break;` statement can be used anywhere to break out of the loop. Below is an example that uses a loop to print 0-9:
 ```
-var()
+var
 i = 0;
 
 while check(i < 10):
-	block();
-	
+	A
 	print(i);
-	
 	i = i + 1;
-	
-	""" ";
-} // """
+	V
 ```
 
 ## If Statments
 ```
 if check(condition):
-	block();
-	
+	A
 	#define comment // code to run if condition is true
-	
-	""" ";
-} // """
+	V
 ```
-The syntax for a singe if statement is exactly the same as that of a while loop.
+The syntax for a single if statement is exactly the same as that of a while loop.
 
 ## If, Else If, Else Statements
 ```
 if check(first_condition):
-	block();
-	
+	A
 	#define comment // if block
-	
-	""" ";
-} // """
+	V
 elif check(else_if_condition):
-	block();
-	
+	A
 	#define comment // else if block
-	
-	""" ";
-} // """
+	V
 elif always:
-	block();
-	
+	A
 	#define comment // else block 
-	
-	""" ";
-} // """
+	V
 ```
 You can have as many else if blocks as you want. The else block is optional, but must use the syntax `elif always` (never `else`).
 
 ## Arrays
 Python++ supports simple dynamicly sized arrays. Here is an example:
 ```
-var()
+var
 my_array = Array(0.0);
 
 my_array.append(8.2);
 my_array.append(12.7);
 my_array.append(5);
 
-var()
+var
 i = 0;
 
 while check(i < len(my_array)):
-	block();
-	
+	A
 	print(my_array[i]);
-	
-	""" ";
-} // """
+	V
 ```
 This prints out
 ```

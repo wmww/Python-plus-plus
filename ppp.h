@@ -29,6 +29,7 @@
 #define comment /// function
 
 #define def template<typename T1=void, typename T2=void, typename T3=void, typename T4=void, typename T5=void, typename T6=void> auto
+#define _ 0
 
 #define comment //naming is because the macro name appears in a common error message 
 

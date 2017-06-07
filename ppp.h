@@ -6,6 +6,7 @@
 #include <iostream>
 #include <vector>
 
+
 #define comment /// mscl
 
 #define print(arg) {std::cout << arg << std::endl;}
@@ -13,6 +14,8 @@
 #define ccp const char *
 #define elif else if
 #define null 0
+#define FOOTER int main(int argc, char ** argv) {run(0); return 0;} void dummyFunc() {
+
 
 #define comment /// block
 
@@ -22,9 +25,9 @@
 #define always (true) blockBeforeColonMacro
 #define V }
 
+
 #define comment /// function
 
-//#define funcMacro(head, body) template<typename T1=void, typename T2=void, typename T3=void, typename T4=void, typename T5=void, typename T6=void> auto head; int dummyInt = body}
 #define def template<typename T1=void, typename T2=void, typename T3=void, typename T4=void, typename T5=void, typename T6=void> auto
 
 #define comment //naming is because the macro name appears in a common error message 
@@ -51,17 +54,5 @@
 #define Array(type) std::vector<decltype(type)>();
 #define len(ary) ary.size()
 #define append push_back
-
-
-#define comment ///footer
-
-#define end_dummy_0 ccp end_dummy_0_
-#define end_dummy_1 ccp end_dummy_1_
-#define end_dummy_2 ccp end_dummy_2_
-#define end_dummy_3 ccp end_dummy_3_
-
-#define CPP_MAIN int main(int argc, char ** argv) {run(0); return 0;}
-
-//#define run(dummy) CPP_MAIN
 
 

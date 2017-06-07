@@ -15,41 +15,28 @@ true = True
 false = False
 always = True
 null = None
+_ = None
+CLASS = None
+class Wrapper:
+	def __init__(self, obj): self.o = obj
+def make(obj): return Wrapper(obj)
 end_dummy_3 = """ */
 ccp start_dummy_1 = " """;
 
-def myFuncName(_5, myFirstRealArg, aaa2, abc, xyz, dsjghjdsghfj):
-	A
-	print(myFirstRealArg);
-	print(aaa2);
-	print(abc);
-	print(xyz);
-	print(dsjghjdsghfj);
+class Abc:
+	CLASS
 	
-	var
-	a = Array(0);
-	
-	a.append(3);
-	a.append(9);
-	a.append(147);
-	
-	var
-	i = 0;
-	
-	while check(i < len(a)):
-		A
-		print(a[i]);
-		i = i + 1;
-		V
-	V
+	V;
 
 def run(_0):
 	A
-	myFuncName(nil, 12, "dsjfhsdkjf", 4.7, true, 9);
+	var
+	inst = make(Abc());
+	print("Hello World!");
 	V
 
 
 #define comment /// footer boilerplate
-FOOTER; run(nil); V
+FOOTER; run(_); V
 
 

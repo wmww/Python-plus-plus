@@ -57,3 +57,23 @@
 #define append push_back
 
 
+#define comment /// class
+
+class dummy_base_class{};
+template<typename T>
+class WrapperClass
+{
+public:
+	T* ptr;	
+	T& o = *(T*)0;
+	
+	WrapperClass(T obj)
+	{
+		*ptr = obj;
+		o = *ptr;
+	}
+};
+#define CLASS dummy_base_class { public:
+#define make(obj) WrapperClass<decltype(obj)>(obj)
+
+

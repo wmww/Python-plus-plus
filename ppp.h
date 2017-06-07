@@ -64,16 +64,15 @@ template<typename T>
 class WrapperClass
 {
 public:
-	T* ptr;	
-	T& o = *(T*)0;
+	T* ptr = new T;
+	T& o = *ptr;
 	
 	WrapperClass(T obj)
 	{
 		*ptr = obj;
-		o = *ptr;
 	}
 };
-#define CLASS dummy_base_class { public:
-#define make(obj) WrapperClass<decltype(obj)>(obj)
+#define CLASS dummy_base_class { public: const char * dummyStr
+#define make(obj) WrapperClass<decltype(obj())>(obj())
 
 

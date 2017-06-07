@@ -19,19 +19,22 @@ _ = None
 CLASS = None
 class Wrapper:
 	def __init__(self, obj): self.o = obj
-def make(obj): return Wrapper(obj)
+def make(obj): return Wrapper(obj())
 end_dummy_3 = """ */
 ccp start_dummy_1 = " """;
 
 class Abc:
-	CLASS
+	CLASS = """ ";
+	int a;
+	bool b;
+	// """
 	
 	V;
 
 def run(_0):
 	A
 	var
-	inst = make(Abc());
+	inst = make(Abc);
 	print("Hello World!");
 	V
 

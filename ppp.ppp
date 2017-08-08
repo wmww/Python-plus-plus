@@ -3,19 +3,26 @@
 #define comment /// this is a framework for writing code that is compatible with both C++ and python
 #define comment /// this header can be #included or copied to the top of your source
 
+#define ccp const char *
+#define dummy_str_0 ccp dummy_str_0
+dummy_str_0 = """ ";
+
 #include <iostream>
 #include <vector>
 
 #define comment /// macro helpers
 
-#define CAT(a, b) a##_##b
+#define CAT(a, b) CAT_(a, b)
+#define CAT_(a, b) a##_##b
+#define ARG_COUNT(...)ARG_COUNT_INTENAL(dummy, __VA_ARGS__, 48,47,46,45,44,43,42,41,40,39,38,37,36,35,34,33,32,31,30,29,28,27,26,25,24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0)
+#define IS_EMPTY(...) ARG_COUNT_INTENAL(dummy,##__VA_ARGS__,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,SOME_ARGS,NO_ARGS)
+#define ARG_COUNT_INTENAL(_0,_1,_2,_3,_4,_5,_6,_7,_8,_9,_10,_11,_12,_13,_14,_15,_16,_17,_18,_19,_20,_21,_22,_23,_24,_25,_26,_27,_28,_29,_30,_31,_32,_33,_34,_35,_36,_37,_38,_39,_40,_41,_42,_43,_44,_45,_46,_47,_48,N,...) N
 
 
 #define comment /// mscl
 
 #define print(arg) {std::cout << arg << std::endl;}
 #define var auto
-#define ccp const char *
 #define null 0
 #define END(dummy) int main(int argc, char ** argv) {run(0); return 0;}
 
@@ -33,27 +40,31 @@
 
 #define comment /// function
 
-#define def template<typename T1=void, typename T2=void, typename T3=void, typename T4=void, typename T5=void, typename T6=void> auto
+#define def template< \
+	typename T_1  = void, \
+	typename T_2  = void, \
+	typename T_3  = void, \
+	typename T_4  = void, \
+	typename T_5  = void, \
+	typename T_6  = void, \
+	typename T_7  = void, \
+	typename T_8  = void, \
+	typename T_9  = void, \
+	typename T_10 = void, \
+	typename T_11 = void, \
+	typename T_12 = void> auto
 #define _ 0
 
-#define comment //naming is because the macro name appears in a common error message 
+#define comment //naming is because the macro name appears in a common error message
 
-#define the_first_arg_is_0_which_is_the_wrong_number_you_idiot() int dummy_arg) blockBeforeColonMacro
-#define the_first_arg_is_1_which_is_the_wrong_number_you_idiot(empty, arg1) int dummy_arg, T1 arg1) blockBeforeColonMacro
-#define the_first_arg_is_2_which_is_the_wrong_number_you_idiot(empty, arg1, arg2) int dummy_arg, T1 arg1, T2 arg2) blockBeforeColonMacro
-#define the_first_arg_is_3_which_is_the_wrong_number_you_idiot(empty, arg1, arg2, arg3) int dummy_arg, T1 arg1, T2 arg2, T3 arg3) blockBeforeColonMacro
-#define the_first_arg_is_4_which_is_the_wrong_number_you_idiot(empty, arg1, arg2, arg3, arg4) int dummy_arg, T1 arg1, T2 arg2, T3 arg3, T4 arg4) blockBeforeColonMacro
-#define the_first_arg_is_5_which_is_the_wrong_number_you_idiot(empty, arg1, arg2, arg3, arg4, arg5) int dummy_arg, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5) blockBeforeColonMacro
-#define the_first_arg_is_6_which_is_the_wrong_number_you_idiot(empty, arg1, arg2, arg3, arg4, arg5, arg6) int dummy_arg, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6) blockBeforeColonMacro
-
-#define _0 the_first_arg_is_0_which_is_the_wrong_number_you_idiot(
-#define _1 the_first_arg_is_1_which_is_the_wrong_number_you_idiot(
-#define _2 the_first_arg_is_2_which_is_the_wrong_number_you_idiot(
-#define _3 the_first_arg_is_3_which_is_the_wrong_number_you_idiot(
-#define _4 the_first_arg_is_4_which_is_the_wrong_number_you_idiot(
-#define _5 the_first_arg_is_5_which_is_the_wrong_number_you_idiot(
-#define _6 the_first_arg_is_6_which_is_the_wrong_number_you_idiot(
-
+#define args FUNC_ARGS(
+#define FUNC_ARGS(...) int dummy_arg CAT(CAT(FUNC, ARG_COUNT(__VA_ARGS__)), ARGS)(__VA_ARGS__)) blockBeforeColonMacro
+#define FUNC_1_ARGS(empty)
+#define FUNC_2_ARGS(empty, arg) , T_1 arg
+//#define FUNC_2_ARGS(arg, ...) , CAT(T, ARG_COUNT(__VA_ARGS__)) arg CAT(CAT(FUNC, ARG_COUNT(__VA_ARGS__)), ARGS)(__VA_ARGS__)
+#define FUNC_3_ARGS(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
+#define FUNC_4_ARGS(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
+#define FUNC_5_ARGS(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
 
 #define comment /// array
 
@@ -64,8 +75,6 @@
 
 #define comment /// class
 
-#define dummy_str_0 ccp dummy_str_0
-dummy_str_0 = """ ";
 class dummy_base_class{};
 template<typename T>
 class WrapperClass
@@ -79,7 +88,6 @@ public:
 		*ptr = obj;
 	}
 };
-ccp dummy_str_1 = " """;
 
 #define CLASS dummy_base_class { public: const char * dummyStr
 #define make(obj, ...) []() -> auto {auto out = WrapperClass<decltype(obj())>(obj()); out.o.__init__(0, __VA_ARGS__); return out;}()
@@ -107,20 +115,17 @@ ccp dummy_str_1 = " """;
 
 #define comment /// header boilerplate
 
-#define dummy_str_2 ccp dummy_str_2
-dummy_str_2 = """ ";/* """
+/* """
 var = None
-A = None
-V = None
 def END(dummy): pass
-def START(): pass
-def check(condition): return condition
 def Array(dummy): return []
+do = None
 true = True
 false = False
 always = True
 null = None
 _ = None
+end = None
 """ */
 ccp dummy_str_3 = " """;
 

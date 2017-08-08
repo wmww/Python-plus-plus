@@ -4,7 +4,22 @@ This is a guide to writing code in Python++. For general info about Python++ see
 
 ## Boilerplate
 
-There is a significant amount of boilerplate code, some of which must go above and some below your code. Just copy this from [boilerplate.ppp](boilerplate.ppp).
+You must download [ppp.ppp](ppp.ppp). It contains most of the boilerplate needed for both C++ and Python. Hello world in Python++ looks like this:
+```
+#include "ppp.ppp"
+exec(open("ppp.ppp").read())
+
+#define comment // your functions here
+
+def run(args):
+	do
+	#define comment // point of entry
+	print("Hello World!");
+end
+
+END(run(_));
+```
+Note that if you wish you can copy/paste the entirety of `ppp.ppp` into the top of this file. and remove the first two lines.
 
 ## Errors
 Depending on what you fuck up, you might get errors in C++, Python or both. Make sure you test with both languages. The provided test script is useful for this.
@@ -15,26 +30,26 @@ Depending on what you fuck up, you might get errors in C++, Python or both. Make
 ```
 
 ## Line Endings
-Semicolons are required at the end of statements (except when they're explicitly forbidden).
+Semicolons are required at the end of statements (except when they're explicitly forbidden). 'keywords' like `do` and `end` do not require semicolons, but having them doesn't break anything.
 
 # Blocks
-Code blocks (functions, ifs, etc) start after a `:`. They are encompassed by `A` and `V` (think vertical angle brackets). Indentation must follow pythons rules.
+Code blocks (functions, ifs, etc) start after a `:`. On the next line there must be an indentation and then `do`. Subsequent lines must maintain indentation until the block is over. The block ends with `end` one indent level to the left (lined up with line that started the block).
 
 ## Defining Functions
 ```
-def function_name(_0):
-	A
+def function_name(args):
+	do
 	#define comment // your code here
-	V
+end
 ```
-Correct indentation is required. This is for a function with no arguments (technically there is one argument, but it is named different things in C++ and Python so you shouldn't try to use it). To send arguments to a function change the `_0` to the number of arguments. For example:
+Correct indentation is required. Note that `args` is a keyword, not a placeholder. This is for a function with no arguments. To send arguments to a function:
 ```
-def function_name(_2, first_arg, second_arg):
-	A
+def function_name(args, first_arg, second_arg):
+	do
 	#define comment // your code here
-	V
+end
 ```
-Under the hood, templates are always used in C++ so no need to worry about types. You can have at most 6 function arguments (not counting the initial argument count)
+Under the hood, templates are always used in C++ so no need to worry about types. You can have at most 12 function arguments (not counting the initial `arg` keyword)
 
 ## Calling Functions
 Calling a function is the same way you call a function in both languages, except that the first argument is a dummy `_`. For example:
@@ -57,57 +72,55 @@ Use the `print()` function to print anything to stdout. Currently, the C++ versi
 Variables are declared in this very specific way:
 ```
 var
-var_name = inital_val;
+var_name = initial_value;
 ```
-Note that the indentation of the two lines must be the same, they can not be on the same line, there may not be a semicolon after the `var` and an initial value is required. Also, choose the initial value wisely, as it determines the type of the variable in C++.
+Note that the indentation of the two lines must be the same, they can not be on the same line, there may not be a semicolon after the `var` and an initial value is required. Also, choose the initial value wisely, as it determines the type of the variable in C++. For example, if you create a variable with an initial value `3`, it will always be an integer and setting it to 4.9 will result in it being 4 (in C++ only).
 
 ## While Loops
 ```
-while check(should_keep_looping):
-	V
+while (should_keep_looping):
+	do
 	#define comment // code for each iteration here
-	A
+end
 ```
-In this example, `should_keep_looping` is any expression that returns a boolean. The `check(...)` can be thought of as simply returning the value it is sent. It has no effect on the logic, but is required because macros. A simple `break;` statement can be used anywhere to break out of the loop. Below is an example that uses a loop to print 0-9:
+In this example, `should_keep_looping` is any expression that returns a boolean. A simple `break;` statement can be used anywhere to break out of the loop. Below is an example that uses a loop to print 0-9:
 ```
 var
 i = 0;
 
 while check(i < 10):
-	A
+	do
 	print(i);
 	i = i + 1;
-	V
+end
 ```
 
 ## If Statments
 ```
-if check(condition):
-	A
+if (condition):
+	do
 	#define comment // code to run if condition is true
-	V
+end
 ```
 The syntax for a single if statement is exactly the same as that of a while loop.
 
 ## If, Else If, Else Statements
 ```
-if check(first_condition):
-	A
+if (first_condition):
+	do
 	#define comment // if block
-	V
-elif check(else_if_condition):
-	A
+elif (else_if_condition):
+	do
 	#define comment // else if block
-	V
 elif always:
-	A
+	do
 	#define comment // else block 
-	V
+end
 ```
-You can have as many else if blocks as you want. The else block is optional, but must use the syntax `elif always` (never `else`).
+You can have as many else if blocks as you want. The else block is optional, but must use the syntax `elif always` (never `else`). Note that while you have to put multiple `do`s, you only use one `end` at the end of everything.
 
 ## Arrays
-Python++ supports simple dynamicly sized arrays. Here is an example:
+Python++ supports simple dynamically sized arrays. Here is an example:
 ```
 var
 my_array = Array(0.0);
@@ -119,10 +132,10 @@ my_array.append(5);
 var
 i = 0;
 
-while check(i < len(my_array)):
-	A
+while (i < len(my_array)):
+	do
 	print(my_array[i]);
-	V
+end
 ```
 This prints out
 ```
@@ -135,10 +148,10 @@ Note that the `Array` constructor must be given a value of the type that you wan
 ## Future
 There are a lot of features I want to implement in the future. These include (in no particular order):
 * A standardized print function that gives the same output for common types in both languages
-* Better string support (concatination, converting between other types and strings, etc.)
+* Better string support (concatenation, converting between other types and strings, etc.)
 * User input
 * File IO
 * For loops (hopefully will take the form `for x in y:`, but not sure if that is possible)
 * Classes
-If you have any feature suggesstions or problems, feel free to open up a GitHub issue.
+If you have any feature suggestions or problems, feel free to open up a GitHub issue.
 

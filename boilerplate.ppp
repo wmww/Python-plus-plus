@@ -3,18 +3,8 @@ exec(open("ppp.ppp").read())
 
 #define comment // your functions here
 
-def func_0(args, a, b, c):
-	do
-	print("hay");
-	print(a);
-	print(b);
-	print(c);
-end
-
 def run(args):
 	do
-	
-	func_0(_, 1, 4.9, "yo");
 	
 	if (1 == 2):
 		do
@@ -26,6 +16,15 @@ def run(args):
 		do
 		print("3");
 	end
+	
+	var
+	i = 2;
+	
+	while (i < 10):
+		do
+		print(i);
+		i += 1;
+	end;
 end
 
 END(run(_));

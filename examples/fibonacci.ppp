@@ -1,21 +1,5 @@
-#include "../ppp.h"
-
-#define comment /// header boilerplate
-#define start_dummy_0 ccp start_dummy_0_
-start_dummy_0 = """ ";/* """
-var = None
-A = None
-V = None
-FOOTER = None
-def check(condition): return condition
-def Array(dummy): return []
-true = True
-false = False
-always = True
-null = None
-_ = None
-end_dummy_3 = """ */
-ccp start_dummy_1 = " """;
+#include "../ppp.ppp"
+exec(open("../ppp.ppp").read())
 
 def run(_0):
 	A
@@ -39,7 +23,4 @@ def run(_0):
 
 
 #define comment /// footer boilerplate
-FOOTER; run(_); V
-
-
-
+END(run(_))

@@ -14,7 +14,7 @@
 #define ccp const char *
 #define elif else if
 #define null 0
-#define END() int main(int argc, char ** argv) {run(0); return 0;}
+#define END(dummy) int main(int argc, char ** argv) {run(0); return 0;}
 
 
 #define comment /// block
@@ -59,6 +59,8 @@
 
 #define comment /// class
 
+#define dummy_str_0 ccp dummy_str_0
+dummy_str_0 = """ ";
 class dummy_base_class{};
 template<typename T>
 class WrapperClass
@@ -72,6 +74,8 @@ public:
 		*ptr = obj;
 	}
 };
+ccp dummy_str_1 = " """;
+
 #define CLASS dummy_base_class { public: const char * dummyStr
 #define make(obj, ...) []() -> auto {auto out = WrapperClass<decltype(obj())>(obj()); out.o.__init__(0, __VA_ARGS__); return out;}()
 
@@ -93,6 +97,31 @@ public:
 
 #define M a(0){}}; decltype(*this)& self = *this;
 #define W };
+
+#define from
+#define ppp
+#define import int
+#define START() dummy_int_ptr;
+
+#define comment /// header boilerplate
+
+#define dummy_str_2 ccp dummy_str_2
+dummy_str_2 = """ ";/* """
+var = None
+A = None
+V = None
+def END(dummy): pass
+def START(): pass
+def check(condition): return condition
+def Array(dummy): return []
+true = True
+false = False
+always = True
+null = None
+_ = None
+end_dummy_3 = """ */
+ccp dummy_str_3 = " """;
+
 
 
 

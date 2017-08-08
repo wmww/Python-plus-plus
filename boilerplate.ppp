@@ -1,12 +1,21 @@
-#include "ppp.py"
-from ppp import *
-START()
+#include "ppp.ppp"
+exec(open("ppp.ppp").read())
 
 #define comment // your functions here
 
 def run(_0):
-	A
-	#define comment // entry point
-	V
+	do
+	
+	if (1 == 2):
+		do
+		print("1");
+	elif (2 == 2):
+		do
+		print("2");
+	elif always:
+		do
+		print("3");
+	end
+end
 
-END(run(0))
+END(run(_));

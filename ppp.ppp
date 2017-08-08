@@ -6,13 +6,16 @@
 #include <iostream>
 #include <vector>
 
+#define comment /// macro helpers
+
+#define CAT(a, b) a##_##b
+
 
 #define comment /// mscl
 
 #define print(arg) {std::cout << arg << std::endl;}
 #define var auto
 #define ccp const char *
-#define elif else if
 #define null 0
 #define END(dummy) int main(int argc, char ** argv) {run(0); return 0;}
 
@@ -20,10 +23,12 @@
 #define comment /// block
 
 #define blockBeforeColonMacro {class LocalDummyClass{const int a; LocalDummyClass()
-#define A a(0){}};
+#define do a(0){}};
 #define check(in) (in) blockBeforeColonMacro
+#define if(condition) if (condition) blockBeforeColonMacro
+#define elif } else if
 #define always (true) blockBeforeColonMacro
-#define V }
+#define end }
 
 
 #define comment /// function
@@ -98,10 +103,7 @@ ccp dummy_str_1 = " """;
 #define M a(0){}}; decltype(*this)& self = *this;
 #define W };
 
-#define from
-#define ppp
-#define import int
-#define START() dummy_int_ptr;
+#define exec(dummy)
 
 #define comment /// header boilerplate
 
@@ -121,6 +123,7 @@ null = None
 _ = None
 """ */
 ccp dummy_str_3 = " """;
+
 
 
 

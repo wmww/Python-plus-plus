@@ -46,7 +46,7 @@ if [ "$py_exit_code" -eq "0" ] && [ "$cpp_run_exit_code" -eq "0" ] && [ "$py_out
 	printf "___________________________________________________\n"
 else
 	
-	if [ "$py_output" != "$cpp_run_output" ]; then
+	if [ "$py_exit_code" -eq "0" ] && [ "$cpp_run_exit_code" -eq "0" ]; then
 		printf "Python and C++ outputs DO NOT MATCH!\n"
 	fi
 	

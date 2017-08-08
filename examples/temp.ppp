@@ -5,9 +5,9 @@
 #define comment /// header boilerplate
 #define start_dummy_0 ccp start_dummy_0_
 start_dummy_0 = """ ";/* """
+import inspect
 var = None
-A = None
-V = None
+W = None
 FOOTER = None
 def check(condition): return condition
 def Array(dummy): return []
@@ -18,8 +18,26 @@ null = None
 _ = None
 CLASS = None
 class Wrapper:
-	def __init__(self, obj): self.o = obj
-def make(obj): return Wrapper(obj())
+	def __init__(self, obj):
+		self.o = obj
+def make(obj, *args):
+	return Wrapper(obj(args))
+self = None
+class MethodStart:
+	def __get__(a, b, c):
+		global self
+		frame = inspect.stack()[1].frame.f_locals
+		for i in frame.keys():
+			if i.startswith("self_"):
+				self = frame[i]
+class MethodEnd:
+	def __get__(a, b, c):
+		global self
+		self = None
+class A:
+	A = MethodStart()
+class V:
+	V = MethodEnd()
 end_dummy_3 = """ */
 ccp start_dummy_1 = " """;
 
@@ -29,12 +47,23 @@ class Abc:
 	bool b;
 	// """
 	
-	V;
-
+	def __init__(self_1, a):
+		M()
+		print("class created");
+		self.yo = "yo"
+		W()
+	
+	def someMember(self_0):
+		M()
+		print(self.yo)
+		W()
+	OVER
+	
 def run(_0):
 	A
 	var
 	inst = make(Abc);
+	inst.o.someMember()
 	print("Hello World!");
 	V
 

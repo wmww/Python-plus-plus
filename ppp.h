@@ -1,6 +1,6 @@
 
 #define comment /// Python++
-#define comment /// this is a framwork for writing code that is compatible with both C++ and python
+#define comment /// this is a framework for writing code that is compatible with both C++ and python
 #define comment /// this header can be #included or copied to the top of your source
 
 #include <iostream>
@@ -73,6 +73,26 @@ public:
 	}
 };
 #define CLASS dummy_base_class { public: const char * dummyStr
-#define make(obj) WrapperClass<decltype(obj())>(obj())
+#define make(obj, ...) []() -> auto {auto out = WrapperClass<decltype(obj())>(obj()); out.o.__init__(0, __VA_ARGS__); return out;}()
+
+#define the_first_method_arg_is_0_which_is_the_wrong_number_you_idiot() ) blockBeforeColonMacro
+#define the_first_method_arg_is_1_which_is_the_wrong_number_you_idiot(arg1) int dummy_arg, T1 arg1) blockBeforeColonMacro
+#define the_first_method_arg_is_2_which_is_the_wrong_number_you_idiot(arg1, arg2) int dummy_arg, T1 arg1, T2 arg2) blockBeforeColonMacro
+#define the_first_method_arg_is_3_which_is_the_wrong_number_you_idiot(arg1, arg2, arg3) int dummy_arg, T1 arg1, T2 arg2, T3 arg3) blockBeforeColonMacro
+#define the_first_method_arg_is_4_which_is_the_wrong_number_you_idiot(arg1, arg2, arg3, arg4) int dummy_arg, T1 arg1, T2 arg2, T3 arg3, T4 arg4) blockBeforeColonMacro
+#define the_first_method_arg_is_5_which_is_the_wrong_number_you_idiot(arg1, arg2, arg3, arg4, arg5) int dummy_arg, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5) blockBeforeColonMacro
+#define the_first_method_arg_is_6_which_is_the_wrong_number_you_idiot(arg1, arg2, arg3, arg4, arg5, arg6) int dummy_arg, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6) blockBeforeColonMacro
+
+#define self_0 the_first_method_arg_is_0_which_is_the_wrong_number_you_idiot(
+#define self_1 the_first_method_arg_is_1_which_is_the_wrong_number_you_idiot(
+#define self_2 the_first_method_arg_is_2_which_is_the_wrong_number_you_idiot(
+#define self_3 the_first_method_arg_is_3_which_is_the_wrong_number_you_idiot(
+#define self_4 the_first_method_arg_is_4_which_is_the_wrong_number_you_idiot(
+#define self_5 the_first_method_arg_is_5_which_is_the_wrong_number_you_idiot(
+#define self_6 the_first_method_arg_is_6_which_is_the_wrong_number_you_idiot(
+
+#define M a(0){}}; decltype(*this)& self = *this;
+#define W };
+
 
 

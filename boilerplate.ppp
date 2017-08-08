@@ -6,7 +6,7 @@ start_dummy_0 = """ ";/* """
 var = None
 A = None
 V = None
-FOOTER = None
+def END(): run(_)
 def check(condition): return condition
 def Array(dummy): return []
 true = True
@@ -24,8 +24,6 @@ def run(_0):
 	#define comment // entry point
 	V
 
-
-#define comment /// footer boilerplate
-FOOTER; run(_); V
+END()
 
 

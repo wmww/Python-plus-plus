@@ -14,7 +14,7 @@
 #define ccp const char *
 #define elif else if
 #define null 0
-#define FOOTER int main(int argc, char ** argv) {run(0); return 0;} void dummyFunc() {
+#define END() int main(int argc, char ** argv) {run(0); return 0;}
 
 
 #define comment /// block

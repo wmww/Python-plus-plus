@@ -4,16 +4,15 @@ exec(open("ppp.ppp").read())
 #define comment // your functions here
 
 def run(args):
-	do
 	
 	if (1 == 2):
-		do
+		
 		print("1");
 	elif (2 == 2):
-		do
+		
 		print("2");
 	elif always:
-		do
+		
 		print("3");
 	end
 	
@@ -21,10 +20,10 @@ def run(args):
 	i = 2;
 	
 	while (i < 10):
-		do
+		
 		print(i);
 		i += 1;
-	end;
+	end
 end
 
 END(run(_));

@@ -28,7 +28,8 @@ dummy_str_0 = """ ";
 
 #define comment /// block
 
-#define blockBeforeColonMacro {class LocalDummyClass{const int a; LocalDummyClass()
+//#define blockBeforeColonMacro {class LocalDummyClass{const int a; LocalDummyClass()
+#define blockBeforeColonMacro { CAT(dummyLabel, __LINE__)
 #define do a(0){}};
 #define check(in) (in) blockBeforeColonMacro
 #define if(condition) if (condition) blockBeforeColonMacro
@@ -65,6 +66,9 @@ dummy_str_0 = """ ";
 #define FUNC_3_ARGS(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
 #define FUNC_4_ARGS(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
 #define FUNC_5_ARGS(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
+#define FUNC_6_ARGS(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
+#define FUNC_7_ARGS(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
+#define FUNC_8_ARGS(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
 
 #define comment /// array
 

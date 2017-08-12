@@ -96,6 +96,7 @@ public:
 #define CLASS dummy_base_class { public: const char * dummyStr
 #define make(obj, ...) []() -> auto {auto out = WrapperClass<decltype(obj())>(obj()); out.o.__init__(0, __VA_ARGS__); return out;}()
 
+/*
 #define the_first_method_arg_is_0_which_is_the_wrong_number_you_idiot() ) blockBeforeColonMacro
 #define the_first_method_arg_is_1_which_is_the_wrong_number_you_idiot(arg1) int dummy_arg, T1 arg1) blockBeforeColonMacro
 #define the_first_method_arg_is_2_which_is_the_wrong_number_you_idiot(arg1, arg2) int dummy_arg, T1 arg1, T2 arg2) blockBeforeColonMacro
@@ -114,16 +115,14 @@ public:
 
 #define M a(0){}}; decltype(*this)& self = *this;
 #define W };
+*/
 
 #define exec(dummy)
-
-#define comment /// header boilerplate
 
 /* """
 var = None
 def END(dummy): pass
 def Array(dummy): return []
-do = None
 true = True
 false = False
 always = True

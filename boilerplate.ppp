@@ -1,29 +1,8 @@
 #include "ppp.ppp"
 exec(open("ppp.ppp").read())
 
-#define comment // your functions here
-
 def run(args):
-	
-	if (1 == 2):
-		
-		print("1");
-	elif (2 == 2):
-		
-		print("2");
-	elif always:
-		
-		print("3");
-	end
-	
-	var
-	i = 2;
-	
-	while (i < 10):
-		
-		print(i);
-		i += 1;
-	end
+	print("hello world!")
 end
 
 END(run(_));

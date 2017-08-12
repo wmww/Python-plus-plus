@@ -12,7 +12,6 @@ exec(open("ppp.ppp").read())
 #define comment // your functions here
 
 def run(args):
-	do
 	#define comment // point of entry
 	print("Hello World!");
 end
@@ -30,22 +29,20 @@ Depending on what you fuck up, you might get errors in C++, Python or both. Make
 ```
 
 ## Line Endings
-Semicolons are required at the end of statements (except when they're explicitly forbidden). 'keywords' like `do` and `end` do not require semicolons, but having them doesn't break anything.
+Semicolons are required at the end of statements (except when they're explicitly forbidden). 'keywords' like `end` do not require semicolons, but having them doesn't break anything.
 
 # Blocks
-Code blocks (functions, ifs, etc) start after a `:`. On the next line there must be an indentation and then `do`. Subsequent lines must maintain indentation until the block is over. The block ends with `end` one indent level to the left (lined up with line that started the block).
+Code blocks (functions, ifs, etc) start after a `:`. Subsequent lines must be indented (same rules as python). The block ends with the `end` keyword one indent level to the left (lined up with line that started the block).
 
 ## Defining Functions
 ```
 def function_name(args):
-	do
 	#define comment // your code here
 end
 ```
 Correct indentation is required. Note that `args` is a keyword, not a placeholder. This is for a function with no arguments. To send arguments to a function:
 ```
 def function_name(args, first_arg, second_arg):
-	do
 	#define comment // your code here
 end
 ```
@@ -79,7 +76,6 @@ Note that the indentation of the two lines must be the same, they can not be on 
 ## While Loops
 ```
 while (should_keep_looping):
-	do
 	#define comment // code for each iteration here
 end
 ```
@@ -89,7 +85,6 @@ var
 i = 0;
 
 while check(i < 10):
-	do
 	print(i);
 	i = i + 1;
 end
@@ -98,7 +93,6 @@ end
 ## If Statments
 ```
 if (condition):
-	do
 	#define comment // code to run if condition is true
 end
 ```
@@ -107,17 +101,14 @@ The syntax for a single if statement is exactly the same as that of a while loop
 ## If, Else If, Else Statements
 ```
 if (first_condition):
-	do
 	#define comment // if block
 elif (else_if_condition):
-	do
 	#define comment // else if block
 elif always:
-	do
 	#define comment // else block 
 end
 ```
-You can have as many else if blocks as you want. The else block is optional, but must use the syntax `elif always` (never `else`). Note that while you have to put multiple `do`s, you only use one `end` at the end of everything.
+You can have as many else if blocks as you want. The else block is optional, but must use the syntax `elif always` (never `else`). Note that you only use one `end` at the end of everything.
 
 ## Arrays
 Python++ supports simple dynamically sized arrays. Here is an example:
@@ -133,7 +124,6 @@ var
 i = 0;
 
 while (i < len(my_array)):
-	do
 	print(my_array[i]);
 end
 ```

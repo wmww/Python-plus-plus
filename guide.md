@@ -84,11 +84,19 @@ In this example, `should_keep_looping` is any expression that returns a boolean.
 var
 i = 0;
 
-while check(i < 10):
+while (i < 10):
 	print(i);
 	i = i + 1;
 end
 ```
+
+## For Loops
+```
+for i in (range(0, 12)):
+	print(i);
+end
+```
+`i` must not already be a local variable (its fine to use it for multiple loops in the same scope). The only difference between this and a normal Python loop is that the range must be in parenthesis. For loops can also iterate over arrays (see below)
 
 ## If Statments
 ```
@@ -133,6 +141,19 @@ This prints out
 12.7
 5.0
 ```
+Here is an example of using a for loop instead of while
+```
+var
+my_array = Array(0.0);
+
+my_array.append(8.2);
+my_array.append(12.7);
+my_array.append(5);
+
+for i in (my_array):
+	print(i)
+end
+```
 Note that the `Array` constructor must be given a value of the type that you want the array to be able to hold. This value is not added to the array, just used for type deduction in C++. As you can see, you use `len` and `append` just like in Python.
 
 ## Future
@@ -141,7 +162,6 @@ There are a lot of features I want to implement in the future. These include (in
 * Better string support (concatenation, converting between other types and strings, etc.)
 * User input
 * File IO
-* For loops (hopefully will take the form `for x in y:`, but not sure if that is possible)
 * Classes
 If you have any feature suggestions or problems, feel free to open up a GitHub issue.
 

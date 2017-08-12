@@ -10,6 +10,23 @@ dummy_str_0 = """ ";
 #include <iostream>
 #include <vector>
 
+struct IntIter
+{
+	int val;
+	bool operator!=(const IntIter& other) const { return val != other.val; }
+	int operator*() const { return val; }
+	const IntIter& operator++ () { ++val; return *this; }
+};
+
+struct IntRange
+{
+	int low = 0, heigh = 0;
+	IntRange(int heighIn) { low = 0; heigh = (0 <= heighIn ? heighIn : 0); }
+	IntRange(int lowIn, int heighIn) { low = lowIn; heigh = (lowIn <= heighIn ? heighIn : lowIn); }
+	IntIter begin () const { return IntIter{low}; }
+	IntIter end () const { return IntIter{heigh}; }
+};
+
 #define comment /// macro helpers
 
 #define CAT(a, b) CAT_(a, b)
@@ -36,7 +53,13 @@ dummy_str_0 = """ ";
 #define elif } else if
 #define always (true) blockBeforeColonMacro
 #define while(condition) while (condition) blockBeforeColonMacro
+#define for for (auto
+#define in(a) : a) blockBeforeColonMacro
+#define range(...) IntRange(__VA_ARGS__)
 #define end }
+
+#define comment /// for range
+
 
 
 #define comment /// function
@@ -92,10 +115,10 @@ public:
 	}
 };
 
+/*
 #define CLASS dummy_base_class { public: const char * dummyStr
 #define make(obj, ...) []() -> auto {auto out = WrapperClass<decltype(obj())>(obj()); out.o.__init__(0, __VA_ARGS__); return out;}()
 
-/*
 #define the_first_method_arg_is_0_which_is_the_wrong_number_you_idiot() ) blockBeforeColonMacro
 #define the_first_method_arg_is_1_which_is_the_wrong_number_you_idiot(arg1) int dummy_arg, T1 arg1) blockBeforeColonMacro
 #define the_first_method_arg_is_2_which_is_the_wrong_number_you_idiot(arg1, arg2) int dummy_arg, T1 arg1, T2 arg2) blockBeforeColonMacro

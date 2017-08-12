@@ -18,7 +18,7 @@ def run(args):
 		print(1);
 	elif (2):
 		print(2);
-	else ():
+	elif always:
 		print(3);
 	end
 	
@@ -26,7 +26,7 @@ def run(args):
 		print(i);
 	end
 	
-	for i in (range(100)):
+	for i in ("test"):
 		print(i)
 	end
 end

@@ -50,9 +50,8 @@ struct IntRange
 #define do a(0){}};
 #define check(in) (in) blockBeforeColonMacro
 #define if(condition) if (condition) blockBeforeColonMacro
-#define else() } else blockBeforeColonMacro
 #define elif } else if
-//#define always (true) blockBeforeColonMacro
+#define always (true) blockBeforeColonMacro
 #define while(condition) while (condition) blockBeforeColonMacro
 #define for for (auto
 #define in(a) : a) blockBeforeColonMacro
@@ -148,6 +147,7 @@ def END(dummy): pass
 def Array(dummy): return []
 true = True
 false = False
+always = True
 null = None
 _ = None
 end = None

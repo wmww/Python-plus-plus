@@ -112,11 +112,11 @@ if (first_condition):
 	#define comment // if block
 elif (else_if_condition):
 	#define comment // else if block
-else ():
+elif always:
 	#define comment // else block 
 end
 ```
-You can have as many else if blocks as you want. The `else` block is optional, but if present the else must be followed by `()`. Note that you only use one `end` at the end of everything.
+You can have as many else if blocks as you want. The else block is optional, but must use the syntax `elif always` (never `else`). Note that you only use one `end` at the end of everything.
 
 ## Arrays
 Python++ supports simple dynamically sized arrays. Here is an example:

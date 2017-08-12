@@ -14,12 +14,21 @@ def run(args):
 		print(i);
 	end
 	
+	if (1):
+		print(1);
+	elif (2):
+		print(2);
+	else ():
+		print(3);
+	end
+	
 	for i in (range(0, 10)):
 		print(i);
 	end
-	#define comment //for i in range(100):
-	#define comment	//print(i)
-	#define comment //end
+	
+	for i in (range(100)):
+		print(i)
+	end
 end
 
 END(run(_));

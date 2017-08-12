@@ -15,5 +15,5 @@
 a.out
 python_cpp
 ppp
-__pycache__
+*__pycache__
 

@@ -1,57 +1,27 @@
-#include "../ppp.h"
+#include "../ppp.ppp"
+exec(open("../ppp.ppp").read())
 
-#define comment /// header boilerplate
-#define start_dummy_0 ccp start_dummy_0_
-start_dummy_0 = """ ";/* """
-var = None
-A = None
-V = None
-FOOTER = None
-def check(condition): return condition
-def Array(dummy): return []
-true = True
-false = False
-always = True
-null = None
-_ = None
-end_dummy_3 = """ */
-ccp start_dummy_1 = " """;
-
-def fizzBuzz(_2, iters, abc):
-	A
+def fizzBuzz(args, iters, abc):
 	var
 	i=0;
 	
-	while check(i < iters):
-		A
-		if check(i % 3 == 0 and i % 5 == 0):
-			A
+	while (i < iters):
+		if (i % 3 == 0 and i % 5 == 0):
 			print("FizzBuzz");
-			V
-		elif check(i % 3 == 0):
-			A
+		elif (i % 3 == 0):
 			print("Fizz");
-			V
-		elif check(i % 5 == 0):
-			A
+		elif (i % 5 == 0):
 			print("Buzz");
-			V
 		elif always:
-			A
 			print(i);
-			V
+		end
 		
 		i = i + 1;
-		V
-	V
+	end
+end
 
-def run(_0):
-	A
+def run(args):
 	fizzBuzz(_, 28, 8);
-	V
+end
 
-
-#define comment /// footer boilerplate
-FOOTER; run(_); V
-
-
+END(run(_))

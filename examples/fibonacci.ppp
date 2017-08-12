@@ -1,16 +1,14 @@
 #include "../ppp.ppp"
 exec(open("../ppp.ppp").read())
 
-def run(_0):
-	A
+def run(args):
 	var
 	i0 = 1;
 	
 	var
 	i1 = 0;
 	
-	while check(i0 < 1000):
-		A
+	while (i0 < 1000):
 		var
 		tmp = i0;
 		
@@ -18,9 +16,7 @@ def run(_0):
 		i1 = tmp;
 		
 		print(i1);
-		V
-	V
+	end
+end
 
-
-#define comment /// footer boilerplate
 END(run(_))

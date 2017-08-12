@@ -62,7 +62,6 @@ dummy_str_0 = """ ";
 #define FUNC_ARGS(...) int dummy_arg CAT(CAT(FUNC, ARG_COUNT(__VA_ARGS__)), ARGS)(__VA_ARGS__)) blockBeforeColonMacro
 #define FUNC_1_ARGS(empty)
 #define FUNC_2_ARGS(empty, arg) , T_1 arg
-//#define FUNC_2_ARGS(arg, ...) , CAT(T, ARG_COUNT(__VA_ARGS__)) arg CAT(CAT(FUNC, ARG_COUNT(__VA_ARGS__)), ARGS)(__VA_ARGS__)
 #define FUNC_3_ARGS(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
 #define FUNC_4_ARGS(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
 #define FUNC_5_ARGS(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)

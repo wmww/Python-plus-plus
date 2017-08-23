@@ -29,7 +29,7 @@ Depending on what you fuck up, you might get errors in C++, Python or both. Make
 ```
 
 ## Line Endings
-Semicolons are required at the end of statements (except when they're explicitly forbidden). 'keywords' like `end` do not require semicolons, but having them doesn't break anything.
+Semicolons are required at the end of statements (except when they're explicitly forbidden). Keywords like `end` do not require semicolons, but having them doesn't break anything.
 
 # Blocks
 Code blocks (functions, ifs, etc) start after a `:`. Subsequent lines must be indented (same rules as python). The block ends with the `end` keyword one indent level to the left (lined up with line that started the block).
@@ -71,7 +71,7 @@ Variables are declared in this very specific way:
 var
 var_name = initial_value;
 ```
-Note that the indentation of the two lines must be the same, they can not be on the same line, there may not be a semicolon after the `var` and an initial value is required. Also, choose the initial value wisely, as it determines the type of the variable in C++. For example, if you create a variable with an initial value `3`, it will always be an integer and setting it to 4.9 will result in it being 4 (in C++ only).
+Note that the indentation of the two lines must be the same, they can not be on the same line, there may not be a semicolon after the `var` and an initial value is required. Also, choose the initial value wisely, as it determines the type of the variable in C++. For example, if you create a variable with an initial value `3`, it will always be an integer and setting it to `4.9` will result in it being 4 (in C++ only).
 
 ## While Loops
 ```
@@ -116,7 +116,7 @@ elif always:
 	#define comment // else block 
 end
 ```
-You can have as many else if blocks as you want. The else block is optional, but must use the syntax `elif always` (never `else`). Note that you only use one `end` at the end of everything.
+You can have as many elif blocks as you want. The else block is optional, but must use the syntax `elif always` (never `else`). Note that you only use one `end` at the end of everything.
 
 ## Arrays
 Python++ supports simple dynamically sized arrays. Here is an example:

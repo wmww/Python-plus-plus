@@ -1,5 +1,5 @@
-#include "../ppp.ppp"
-exec(open("../ppp.ppp").read())
+#include "ppp.ppp"
+exec(open("ppp.ppp").read())
 
 def fizzBuzz(args, iters, abc):
 	var

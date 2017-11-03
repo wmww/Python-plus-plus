@@ -2,12 +2,12 @@
 exec(open("ppp.ppp").read())
 
 class Foo:
-	obj_members = parse_members(""" ",
+	members(""" ",
 		a,
 		xyz,
 		b,
 		foo,
-	" """);
+	" """)
 end
 
 def run(args):

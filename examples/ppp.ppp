@@ -114,15 +114,13 @@ struct IntRange
 
 #define comment /// class
 
-struct dummy_struct {};;
+class EmptyClass {};
 
 #define class template< \
 	typename M_2  = void, \
 	typename M_3  = void, \
 	typename M_4  = void, \
 	typename M_5  = void> class
-
-#define obj_members dummy_struct { int dummy_member
 
 #define CLASS_DATA_2(empty, end)
 #define CLASS_DATA_3(empty, name, end) M_2 name;
@@ -131,7 +129,7 @@ struct dummy_struct {};;
 #define CLASS_DATA_6(empty, name, ...) CAT(M, ARG_COUNT(,__VA_ARGS__)) name; CAT(CLASS_DATA, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
 #define CLASS_DATA_7(empty, name, ...) CAT(M, ARG_COUNT(,__VA_ARGS__)) name; CAT(CLASS_DATA, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
 
-#define parse_members(a, ...) 0; CAT(CLASS_DATA, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
+#define members(a, ...) EmptyClass { CAT(CLASS_DATA, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
 
 /*
 class dummy_base_class{};
@@ -176,9 +174,11 @@ public:
 #define exec(dummy)
 
 /* """
+import inspect
 var = None
 def END(dummy): pass
 def Array(dummy): return []
+def members(member_vars): inspect.stack()[1].frame.f_locals['member_vars'] = [i.strip().strip(',') for i in member_vars.split()][1:-1]
 true = True
 false = False
 always = True

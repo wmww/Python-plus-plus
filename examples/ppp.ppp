@@ -117,10 +117,10 @@ struct IntRange
 class EmptyClass {};
 
 #define class template< \
-	typename M_2  = void, \
-	typename M_3  = void, \
-	typename M_4  = void, \
-	typename M_5  = void> class
+	typename M_2  = EmptyClass, \
+	typename M_3  = EmptyClass, \
+	typename M_4  = EmptyClass, \
+	typename M_5  = EmptyClass> class
 
 #define CLASS_DATA_2(empty, end)
 #define CLASS_DATA_3(empty, name, end) M_2 name;
@@ -129,7 +129,24 @@ class EmptyClass {};
 #define CLASS_DATA_6(empty, name, ...) CAT(M, ARG_COUNT(,__VA_ARGS__)) name; CAT(CLASS_DATA, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
 #define CLASS_DATA_7(empty, name, ...) CAT(M, ARG_COUNT(,__VA_ARGS__)) name; CAT(CLASS_DATA, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
 
-#define members(a, ...) EmptyClass { CAT(CLASS_DATA, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
+#define members(a, ...) EmptyClass { public: CAT(CLASS_DATA, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
+
+#define margs METHOD_ARGS(
+#define METHOD_ARGS(...) CAT(METHOD_ARGS, ARG_COUNT(__VA_ARGS__))(__VA_ARGS__)) blockBeforeColonMacro
+#define METHOD_ARGS_1(empty)
+#define METHOD_ARGS_2(empty, arg) T_1 arg
+#define METHOD_ARGS_3(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(METHOD_ARGS, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
+#define METHOD_ARGS_4(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(METHOD_ARGS, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
+#define METHOD_ARGS_5(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(METHOD_ARGS, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
+#define METHOD_ARGS_6(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(METHOD_ARGS, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
+#define METHOD_ARGS_7(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(METHOD_ARGS, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
+#define METHOD_ARGS_8(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(METHOD_ARGS, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
+#define METHOD_ARGS_9(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(METHOD_ARGS, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
+#define METHOD_ARGS_10(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(METHOD_ARGS, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
+#define METHOD_ARGS_11(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(METHOD_ARGS, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
+#define METHOD_ARGS_12(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(METHOD_ARGS, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
+
+#define mtop() &decltype(*this) self = *this;
 
 /*
 class dummy_base_class{};
@@ -178,7 +195,11 @@ import inspect
 var = None
 def END(dummy): pass
 def Array(dummy): return []
-def members(member_vars): inspect.stack()[1].frame.f_locals['member_vars'] = [i.strip().strip(',') for i in member_vars.split()][1:-1]
+def members(member_vars):
+	inspect.stack()[1].frame.f_locals['member_vars'] = [i.strip().strip(',') for i in member_vars.split()][1:-1]
+def mtop():
+	locals = inspect.stack()[1].frame.f_locals
+	locals['self'] = locals['margs']
 true = True
 false = False
 always = True

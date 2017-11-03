@@ -8,6 +8,11 @@ class Foo:
 		b,
 		foo,
 	" """)
+	
+	def method(margs):
+		auto self = *this;
+		print(3);
+	end
 end
 
 def run(args):
@@ -38,6 +43,11 @@ def run(args):
 	for i in ("test"):
 		print(i)
 	end
+	
+	var
+	foo = Foo<>();
+	
+	foo.method();
 end
 
 END(run(_));

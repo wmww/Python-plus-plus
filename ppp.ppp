@@ -4,7 +4,7 @@
 
 #define comment /// Python++ is a framework for cross language development
 #define comment /// Specifically, it's a set of guidelines and boilerplate that allows you to easily write code valid in both Python3 and C++14
-#define comment /// More info at https://github.com/william01110111/Python-plus-plus
+#define comment /// More info at https://github.com/wmww/Python-plus-plus
 
 #define comment /// this file can be copied to the top of your Python++ source, or placed alongside it with this at the top:
 #define comment ///	1. |
@@ -65,7 +65,7 @@ struct IntRange
 #define for for (auto
 #define in(a) : a) blockBeforeColonMacro
 #define range(...) IntRange(__VA_ARGS__)
-#define end }
+#define end };
 
 #define comment /// for range
 
@@ -100,6 +100,10 @@ struct IntRange
 #define FUNC_6_ARGS(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
 #define FUNC_7_ARGS(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
 #define FUNC_8_ARGS(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
+#define FUNC_9_ARGS(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
+#define FUNC_10_ARGS(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
+#define FUNC_11_ARGS(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
+#define FUNC_12_ARGS(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
 
 #define comment /// array
 
@@ -110,6 +114,26 @@ struct IntRange
 
 #define comment /// class
 
+struct dummy_struct {};;
+
+#define class template< \
+	typename M_2  = void, \
+	typename M_3  = void, \
+	typename M_4  = void, \
+	typename M_5  = void> class
+
+#define obj_members dummy_struct { int dummy_member
+
+#define CLASS_DATA_2(empty, end)
+#define CLASS_DATA_3(empty, name, end) M_2 name;
+#define CLASS_DATA_4(empty, name, ...) CAT(M, ARG_COUNT(,__VA_ARGS__)) name; CAT(CLASS_DATA, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
+#define CLASS_DATA_5(empty, name, ...) CAT(M, ARG_COUNT(,__VA_ARGS__)) name; CAT(CLASS_DATA, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
+#define CLASS_DATA_6(empty, name, ...) CAT(M, ARG_COUNT(,__VA_ARGS__)) name; CAT(CLASS_DATA, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
+#define CLASS_DATA_7(empty, name, ...) CAT(M, ARG_COUNT(,__VA_ARGS__)) name; CAT(CLASS_DATA, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
+
+#define parse_members(a, ...) 0; CAT(CLASS_DATA, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
+
+/*
 class dummy_base_class{};
 template<typename T>
 class WrapperClass
@@ -123,6 +147,7 @@ public:
 		*ptr = obj;
 	}
 };
+*/
 
 /*
 #define CLASS dummy_base_class { public: const char * dummyStr

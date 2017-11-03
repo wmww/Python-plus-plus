@@ -1,23 +1,16 @@
 #include "ppp.ppp"
 exec(open("ppp.ppp").read())
 
-def Foo(args):
-	
-	class Inst:
-		
-	
-	data(Inst(), """ ",
-		a, 32423,
-		b, 432,
-		agf, a,
-		fgd, c,
-	" """)
+class Foo:
+	obj_members = parse_members(""" ",
+		a,
+		xyz,
+		b,
+		foo,
+	" """);
 end
 
 def run(args):
-	
-	var
-	foo = Foo(8.1);
 	
 	var
 	a = Array(0);

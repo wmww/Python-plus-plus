@@ -239,11 +239,19 @@ import inspect
 var = None
 def END(dummy): pass
 def Array(dummy): return []
+class WrapperClass: pass
 def members(member_vars):
 	inspect.stack()[1].frame.f_locals['member_vars'] = [i.strip().strip(',') for i in member_vars.split()][1:-1]
 def mtop():
-	locals = inspect.stack()[1].frame.f_locals
-	locals['self'] = locals['margs']
+	inspect.stack()[1].frame.f_locals['self'] = inspect.stack()[1].frame.f_locals['margs']
+	print(inspect.stack()[1].frame.f_locals['self'])
+def make(class_type, *argv):
+	ret = WrapperClass()
+	o = class_type()
+	for i in range(len(argv)):
+		o.__dict__[class_type.member_vars[i]] = argv[i]
+	ret.o = o
+	return ret
 true = True
 false = False
 always = True

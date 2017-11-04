@@ -10,26 +10,15 @@ class Foo:
 	" """)
 	
 	def m0(margs):
-		mtop()
+		mtop();
 		self.a = self.a + 1;
 	end
 	
 	def m1(margs):
-		mtop()
+		mtop();
 		print(self.a);
 	end
 end
-
-/*
-template<typename A, typename B, typename C, typename D, typename E = void>
-struct Bar
-{
-	A a;
-	B b;
-	C c;
-	D d;
-};
-*/
 
 def run(args):
 	

@@ -9,11 +9,27 @@ class Foo:
 		foo,
 	" """)
 	
-	def method(margs):
-		auto self = *this;
-		print(3);
+	def m0(margs):
+		mtop()
+		self.a = self.a + 1;
+	end
+	
+	def m1(margs):
+		mtop()
+		print(self.a);
 	end
 end
+
+/*
+template<typename A, typename B, typename C, typename D, typename E = void>
+struct Bar
+{
+	A a;
+	B b;
+	C c;
+	D d;
+};
+*/
 
 def run(args):
 	
@@ -45,9 +61,12 @@ def run(args):
 	end
 	
 	var
-	foo = Foo<>();
+	foo = make(Foo, 8, 1, 0, 7);
 	
-	foo.method();
+	foo.o.m1();
+	foo.o.m0();
+	foo.o.m0();
+	foo.o.m1();
 end
 
 END(run(_));

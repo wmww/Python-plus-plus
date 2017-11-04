@@ -18,6 +18,7 @@ dummy_str_0 = """ ";
 
 #include <iostream>
 #include <vector>
+#include <memory>
 
 struct IntIter
 {
@@ -42,7 +43,7 @@ struct IntRange
 #define CAT_(a, b) a##_##b
 #define ARG_COUNT(...)ARG_COUNT_INTENAL(dummy, __VA_ARGS__, 48,47,46,45,44,43,42,41,40,39,38,37,36,35,34,33,32,31,30,29,28,27,26,25,24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0)
 #define ARG_COUNT_INTENAL(_0,_1,_2,_3,_4,_5,_6,_7,_8,_9,_10,_11,_12,_13,_14,_15,_16,_17,_18,_19,_20,_21,_22,_23,_24,_25,_26,_27,_28,_29,_30,_31,_32,_33,_34,_35,_36,_37,_38,_39,_40,_41,_42,_43,_44,_45,_46,_47,_48,N,...) N
-
+#define COMMA ,
 
 #define comment /// mscl
 
@@ -122,6 +123,20 @@ class EmptyClass {};
 	typename M_4  = EmptyClass, \
 	typename M_5  = EmptyClass> class
 
+#define CLASS_CONSTRUCT_A_2(empty, end)
+#define CLASS_CONSTRUCT_A_3(empty, name, end) M_2 arg_2
+#define CLASS_CONSTRUCT_A_4(empty, name, ...) CAT(M, ARG_COUNT(,__VA_ARGS__)) CAT(arg, ARG_COUNT(,__VA_ARGS__)), CAT(CLASS_CONSTRUCT_A, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
+#define CLASS_CONSTRUCT_A_5(empty, name, ...) CAT(M, ARG_COUNT(,__VA_ARGS__)) CAT(arg, ARG_COUNT(,__VA_ARGS__)), CAT(CLASS_CONSTRUCT_A, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
+#define CLASS_CONSTRUCT_A_6(empty, name, ...) CAT(M, ARG_COUNT(,__VA_ARGS__)) CAT(arg, ARG_COUNT(,__VA_ARGS__)), CAT(CLASS_CONSTRUCT_A, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
+#define CLASS_CONSTRUCT_A_7(empty, name, ...) CAT(M, ARG_COUNT(,__VA_ARGS__)) CAT(arg, ARG_COUNT(,__VA_ARGS__)), CAT(CLASS_CONSTRUCT_A, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
+
+#define CLASS_CONSTRUCT_B_2(empty, end)
+#define CLASS_CONSTRUCT_B_3(empty, name, end) name = arg_2;
+#define CLASS_CONSTRUCT_B_4(empty, name, ...) name = CAT(arg, ARG_COUNT(,__VA_ARGS__)); CAT(CLASS_CONSTRUCT_B, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
+#define CLASS_CONSTRUCT_B_5(empty, name, ...) name = CAT(arg, ARG_COUNT(,__VA_ARGS__)); CAT(CLASS_CONSTRUCT_B, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
+#define CLASS_CONSTRUCT_B_6(empty, name, ...) name = CAT(arg, ARG_COUNT(,__VA_ARGS__)); CAT(CLASS_CONSTRUCT_B, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
+#define CLASS_CONSTRUCT_B_7(empty, name, ...) name = CAT(arg, ARG_COUNT(,__VA_ARGS__)); CAT(CLASS_CONSTRUCT_B, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
+
 #define CLASS_DATA_2(empty, end)
 #define CLASS_DATA_3(empty, name, end) M_2 name;
 #define CLASS_DATA_4(empty, name, ...) CAT(M, ARG_COUNT(,__VA_ARGS__)) name; CAT(CLASS_DATA, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
@@ -129,7 +144,14 @@ class EmptyClass {};
 #define CLASS_DATA_6(empty, name, ...) CAT(M, ARG_COUNT(,__VA_ARGS__)) name; CAT(CLASS_DATA, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
 #define CLASS_DATA_7(empty, name, ...) CAT(M, ARG_COUNT(,__VA_ARGS__)) name; CAT(CLASS_DATA, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
 
-#define members(a, ...) EmptyClass { public: CAT(CLASS_DATA, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
+#define comment // must use constructor because brace initialization doesn't work if the class has a base class
+#define members(a, ...) \
+	EmptyClass { \
+	public: \
+		CAT(CLASS_DATA, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__) \
+		void setup(CAT(CLASS_CONSTRUCT_A, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)) { \
+			CAT(CLASS_CONSTRUCT_B, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__) \
+		}
 
 #define margs METHOD_ARGS(
 #define METHOD_ARGS(...) CAT(METHOD_ARGS, ARG_COUNT(__VA_ARGS__))(__VA_ARGS__)) blockBeforeColonMacro
@@ -146,7 +168,29 @@ class EmptyClass {};
 #define METHOD_ARGS_11(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(METHOD_ARGS, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
 #define METHOD_ARGS_12(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(METHOD_ARGS, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
 
-#define mtop() &decltype(*this) self = *this;
+#define mtop() auto& self = *this;
+
+template<typename T>
+struct WrapperClass
+{
+public:
+	std::shared_ptr<T> ptr;
+	T o;
+	
+	WrapperClass(): ptr(std::make_shared<T>()), o(*ptr) {}
+};
+
+#define MAKE_TEMPLATE_1(empty)
+#define MAKE_TEMPLATE_2(empty, arg) decltype(arg)
+#define MAKE_TEMPLATE_3(empty, arg, ...) decltype(arg), CAT(MAKE_TEMPLATE, ARG_COUNT(, __VA_ARGS__))(,__VA_ARGS__)
+#define MAKE_TEMPLATE_4(empty, arg, ...) decltype(arg), CAT(MAKE_TEMPLATE, ARG_COUNT(, __VA_ARGS__))(,__VA_ARGS__)
+#define MAKE_TEMPLATE_5(empty, arg, ...) decltype(arg), CAT(MAKE_TEMPLATE, ARG_COUNT(, __VA_ARGS__))(,__VA_ARGS__)
+#define MAKE_TEMPLATE_6(empty, arg, ...) decltype(arg), CAT(MAKE_TEMPLATE, ARG_COUNT(, __VA_ARGS__))(,__VA_ARGS__)
+
+#define CLASS_TYPE(class_name, ...) class_name < CAT(MAKE_TEMPLATE, ARG_COUNT(, __VA_ARGS__))(,__VA_ARGS__) >
+
+#define make(class_name, ...) [&]() -> auto { WrapperClass <CLASS_TYPE(class_name, __VA_ARGS__)> ret; ret.o.setup(__VA_ARGS__); return ret; }()
+//#define make(class_name, ...) WrapperClass < int > ()
 
 /*
 class dummy_base_class{};

@@ -16,7 +16,7 @@ class Foo:
 	
 	def m1(margs):
 		mtop();
-		print(self.a);
+		#define comment // print(0);
 	end
 end
 
@@ -43,10 +43,6 @@ def run(args):
 	
 	for i in (range(0, 10)):
 		print(i);
-	end
-	
-	for i in ("test"):
-		print(i)
 	end
 	
 	var

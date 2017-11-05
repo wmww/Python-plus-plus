@@ -243,8 +243,10 @@ class WrapperClass: pass
 def members(member_vars):
 	inspect.stack()[1].frame.f_locals['member_vars'] = [i.strip().strip(',') for i in member_vars.split()][1:-1]
 def mtop():
-	inspect.stack()[1].frame.f_locals['self'] = inspect.stack()[1].frame.f_locals['margs']
-	print(inspect.stack()[1].frame.f_locals['self'])
+	#inspect.stack()[1].frame.f_locals['self'] = inspect.stack()[1].frame.f_locals['margs']
+	#print(inspect.stack()[1].frame.f_locals['self'])
+	global self
+	self = inspect.stack()[1].frame.f_locals['margs']
 def make(class_type, *argv):
 	ret = WrapperClass()
 	o = class_type()
@@ -252,6 +254,7 @@ def make(class_type, *argv):
 		o.__dict__[class_type.member_vars[i]] = argv[i]
 	ret.o = o
 	return ret
+self = None
 true = True
 false = False
 always = True

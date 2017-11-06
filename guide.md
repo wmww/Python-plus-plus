@@ -2,7 +2,7 @@
 
 This is a guide to writing code in Python++. For general info about Python++ see the [readme](readme.md).
 
-## Boilerplate
+## Getting started
 
 You must download [ppp.ppp](ppp.ppp). It contains most of the boilerplate needed for both C++ and Python. Hello world in Python++ looks like this:
 ```
@@ -26,6 +26,12 @@ Depending on what you fuck up, you might get errors in C++, Python or both. Make
 ## Comments
 ```
 #define comment // your comment here
+```
+inside a function you can use alternative comments:
+```
+def someFunc(args):
+	"lines in double quotes are comments, don't forget a ';' at the end";
+end
 ```
 
 ## Line Endings
@@ -156,12 +162,44 @@ end
 ```
 Note that the `Array` constructor must be given a value of the type that you want the array to be able to hold. This value is not added to the array, just used for type deduction in C++. As you can see, you use `len` and `append` just like in Python.
 
+## Classes
+Python++ supports classes with data and methods.
+```
+class MyClass:
+	members(""" ",
+		foo,
+		bar,
+	" """)
+	
+	def method_name(margs):
+		mtop();
+		print(self.foo);
+	end
+end
+```
+To construct and use an instance of this class,
+```
+var
+my_object = make(MyClass, 8, 1);
+
+my_object.o.mathod_name();
+```
+Note that the arguments to make are the name of the class followed by the values of the member variables in order (so `foo` starts as 8 and `bar` starts as 1). Classes can be constructed with their member variables being any type, but once constructed the types can't be changed (and if a variable is initialized to an object of a class, you cannot assign to it an object with different member variable type).
+
+### Notes about classes
+* Instead of `args`, the argument list of methods start with `margs`
+* Every method must start with a call to `mtop()` (method top).
+* When accessing object data inside a method, use `self.some_var`.
+* When accessing data outside the class, use `obj_name.o.some_var` or `obj_name.o.some_method()`, the `.o` stands for object and is required
+* You do not have to pass in the dummy `_` as the first argument for methods
+* Objects are pass-by-reference
+* They use automatic memory management in both languages.
+
 ## Future
 There are a lot of features I want to implement in the future. These include (in no particular order):
 * A standardized print function that gives the same output for common types in both languages
 * Better string support (concatenation, converting between other types and strings, etc.)
 * User input
 * File IO
-* Classes
 If you have any feature suggestions or problems, feel free to open up a GitHub issue.
 

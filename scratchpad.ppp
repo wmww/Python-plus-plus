@@ -16,7 +16,7 @@ class Foo:
 	
 	def m1(margs):
 		mtop();
-		#define comment // print(0);
+		print(0);
 	end
 end
 

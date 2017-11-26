@@ -1,6 +1,6 @@
 # Python++ guide
 
-This is a guide to writing code in Python++. For general info about Python++ see the [readme](readme.md).
+This is a guide to writing code in [Python++](https://github.com/wmww/Python-plus-plus). For general info about Python++ see the [readme](readme.md).
 
 ## Getting started
 
@@ -16,12 +16,12 @@ def run(args):
 	print("Hello World!");
 end
 
-END(run(_));
+end_program()
 ```
-Note that if you wish you can copy/paste the entirety of `ppp.ppp` into the top of this file. and remove the first two lines.
+Note that if you wish you can copy/paste the entirety of `ppp.ppp` into the top of this file. and remove the first two lines. Importing from an external file is generally recommended for readability and easy updating.
 
 ## Errors
-Depending on what you fuck up, you might get errors in C++, Python or both. Make sure you test with both languages. The provided test script is useful for this.
+Depending on what you fuck up, you might get errors in C++, Python, both or just get different output. Make sure you test with both languages. The provided test script is useful for this.
 
 ## Comments
 ```
@@ -29,7 +29,7 @@ Depending on what you fuck up, you might get errors in C++, Python or both. Make
 ```
 inside a function you can use alternative comments:
 ```
-def someFunc(args):
+def some_func(args):
 	"lines in double quotes are comments, don't forget a ';' at the end";
 end
 ```
@@ -55,11 +55,11 @@ end
 Under the hood, templates are always used in C++ so no need to worry about types. You can have at most 12 function arguments (not counting the initial `arg` keyword)
 
 ## Calling Functions
-Calling a function is the same way you call a function in both languages, except that the first argument is a dummy `_`. For example:
+Calling a function is the same way you call a function in both languages. For example:
 ```
-function_name(_, "hay", 48.9);
+function_name("hay", 48.9);
 ```
-Is how to call the 2nd function above. The `_` is required even if there are no arguments.
+Note that (unlike previous), the `args` keyword in function declarations doesn't cause any trouble when calling functions. It is not an actual argument.
 
 ## Boolean values
 In Python++, use `true` and `false` (not capitalized) for Boolean literals.
@@ -77,7 +77,7 @@ Variables are declared in this very specific way:
 var
 var_name = initial_value;
 ```
-Note that the indentation of the two lines must be the same, they can not be on the same line, there may not be a semicolon after the `var` and an initial value is required. Also, choose the initial value wisely, as it determines the type of the variable in C++. For example, if you create a variable with an initial value `3`, it will always be an integer and setting it to `4.9` will result in it being 4 (in C++ only).
+Note that the indentation of the two lines must be the same, they can not be on the same line, there may not be a semicolon after the `var` and an initial value is required. Also, choose the initial value wisely, as it determines the type of the variable in C++. For example, if you create a variable with an initial value `3`, it will always be an integer and setting it to `4.9` is not allowed (it will not throw an error in either language, but it will end up being 4 in C++ and 4.9 in python, so the programs will likely give different output).
 
 ## While Loops
 ```
@@ -184,16 +184,15 @@ my_object = make(MyClass, 8, 1);
 
 my_object.o.mathod_name();
 ```
-Note that the arguments to make are the name of the class followed by the values of the member variables in order (so `foo` starts as 8 and `bar` starts as 1). Classes can be constructed with their member variables being any type, but once constructed the types can't be changed (and if a variable is initialized to an object of a class, you cannot assign to it an object with different member variable type).
+Note that the arguments to make are the name of the class followed by the values of the member variables in order (so `foo` starts as 8 and `bar` starts as 1). Classes can be constructed with their member variables being any type, but once constructed the types can't be changed (and if a variable is initialized to an object of a class, you cannot assign to it an object with different member variable types).
 
 ### Notes about classes
-* Instead of `args`, the argument list of methods start with `margs`
-* Every method must start with a call to `mtop()` (method top).
-* When accessing object data inside a method, use `self.some_var`.
+* Instead of `args`, the argument list of methods start with `margs` (method args)
+* Every method must start with a call to `mtop()` (method top)
+* When accessing object data inside a method, use `self.some_var`
 * When accessing data outside the class, use `obj_name.o.some_var` or `obj_name.o.some_method()`, the `.o` stands for object and is required
-* You do not have to pass in the dummy `_` as the first argument for methods
 * Objects are pass-by-reference
-* They use automatic memory management in both languages.
+* They use automatic memory management in both languages
 
 ## Future
 There are a lot of features I want to implement in the future. These include (in no particular order):

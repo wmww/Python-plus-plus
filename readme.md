@@ -2,11 +2,11 @@
 _A framework for cross language development_
 
 ## About
-Python++ is a framework for creating Python/C++ [polyglots](https://en.wikipedia.org/wiki/Polyglot_(computing)), programs valid in both programming languages. Specifically, it is a collection of guidelines and boilerplate that allows you to write a single program which will produce the same output when compiled with a C++14 compiler or run with a Python3 interpreter. It does this with heavy usage of C style macros as well as numerous hacks of the syntax of both languages. No external transpiler or preprocessor (aside from the standard C/C++ preprocessor) is needed. The exact same Python++ file can be fed in unmodified to a stock C++ compiler and a stock Python interpreter and you will get the same output. Python++ was originally developed by William W Wold for the Stupid Shit No One Needs and Terrible Ideas Hackathon 2017.
+Python++ is a framework for creating Python/C++ [polyglots](https://en.wikipedia.org/wiki/Polyglot_(computing)), programs valid in both programming languages. Specifically, it is a collection of guidelines and boilerplate that allows you to write a single program which will produce the same output when compiled with a C++14 compiler or run with a Python3 interpreter. It does this with heavy usage of C style macros and numerous hacks of the syntax of both languages. No external transpiler or preprocessor (aside from the standard C/C++ preprocessor) is needed. The exact same Python++ file can be fed in unmodified to a stock C++ compiler and a stock Python interpreter and you will get the same output. The first version of Python++ was developed by William W Wold for the Stupid Shit No One Needs and Terrible Ideas Hackathon 2017.
 
 ## Overview
 Python++ consists of 3 things:
-1. [ppp.ppp](ppp.ppp): All the boilerplate you need. This can be copied to the top of your Python++ source, or placed alongside it.
+1. [ppp.ppp](ppp.ppp): This is itself a polyglot that can be copied to the top of your Python++ source, or placed alongside it and imported.
 2. [guide.md](guide.md): A comprehensive guide to writing Python++ programs.
 4. [examples](examples): examples of programs written in Python++.
 

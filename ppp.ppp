@@ -6,7 +6,7 @@
 #define comment /// Specifically, it's a set of guidelines and boilerplate that allows you to easily write code valid in both Python3 and C++14
 #define comment /// More info at https://github.com/wmww/Python-plus-plus
 
-#define comment /// this file can be copied to the top of your Python++ source, or placed alongside it with this at the top:
+#define comment /// this file can be copied to the top of your Python++ source, or placed alongside it if you have this at the top of yours:
 #define comment ///	1. |
 #define comment ///	2. |	#include "ppp.ppp"
 #define comment ///	3. |	exec(open("ppp.ppp").read())

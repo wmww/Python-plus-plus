@@ -20,6 +20,11 @@ class Foo:
 	end
 end
 
+def another(args, a, b):
+	print(a);
+	print(b);
+end
+
 def run(args):
 	
 	var
@@ -52,7 +57,9 @@ def run(args):
 	foo.o.m0();
 	foo.o.m0();
 	foo.o.m1();
+	
+	another(8, 6);
 end
 
-END(run(_));
+end_program()
 

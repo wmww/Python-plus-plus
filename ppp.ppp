@@ -50,7 +50,7 @@ struct IntRange
 #define print(arg) {std::cout << arg << std::endl;}
 #define var auto
 #define null 0
-#define END(dummy) int main(int argc, char ** argv) {run(0); return 0;}
+#define end_program() int main(int argc, char ** argv) {run(); return 0;}
 
 
 #define comment /// block
@@ -92,19 +92,19 @@ struct IntRange
 #define comment //naming is because the macro name appears in a common error message
 
 #define args FUNC_ARGS(
-#define FUNC_ARGS(...) int dummy_arg CAT(CAT(FUNC, ARG_COUNT(__VA_ARGS__)), ARGS)(__VA_ARGS__)) blockBeforeColonMacro
+#define FUNC_ARGS(...) CAT(CAT(FUNC, ARG_COUNT(__VA_ARGS__)), ARGS)(__VA_ARGS__)) blockBeforeColonMacro
 #define FUNC_1_ARGS(empty)
-#define FUNC_2_ARGS(empty, arg) , T_1 arg
-#define FUNC_3_ARGS(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
-#define FUNC_4_ARGS(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
-#define FUNC_5_ARGS(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
-#define FUNC_6_ARGS(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
-#define FUNC_7_ARGS(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
-#define FUNC_8_ARGS(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
-#define FUNC_9_ARGS(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
-#define FUNC_10_ARGS(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
-#define FUNC_11_ARGS(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
-#define FUNC_12_ARGS(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
+#define FUNC_2_ARGS(empty, arg) T_1 arg
+#define FUNC_3_ARGS(empty, arg, ...) CAT(T, ARG_COUNT(,__VA_ARGS__)) arg, CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
+#define FUNC_4_ARGS(empty, arg, ...) CAT(T, ARG_COUNT(,__VA_ARGS__)) arg, CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
+#define FUNC_5_ARGS(empty, arg, ...) CAT(T, ARG_COUNT(,__VA_ARGS__)) arg, CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
+#define FUNC_6_ARGS(empty, arg, ...) CAT(T, ARG_COUNT(,__VA_ARGS__)) arg, CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
+#define FUNC_7_ARGS(empty, arg, ...) CAT(T, ARG_COUNT(,__VA_ARGS__)) arg, CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
+#define FUNC_8_ARGS(empty, arg, ...) CAT(T, ARG_COUNT(,__VA_ARGS__)) arg, CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
+#define FUNC_9_ARGS(empty, arg, ...) CAT(T, ARG_COUNT(,__VA_ARGS__)) arg, CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
+#define FUNC_10_ARGS(empty, arg, ...) CAT(T, ARG_COUNT(,__VA_ARGS__)) arg, CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
+#define FUNC_11_ARGS(empty, arg, ...) CAT(T, ARG_COUNT(,__VA_ARGS__)) arg, CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
+#define FUNC_12_ARGS(empty, arg, ...) CAT(T, ARG_COUNT(,__VA_ARGS__)) arg, CAT(CAT(FUNC, ARG_COUNT(,__VA_ARGS__)), ARGS)(,__VA_ARGS__)
 
 #define comment /// array
 
@@ -190,7 +190,6 @@ public:
 #define CLASS_TYPE(class_name, ...) class_name < CAT(MAKE_TEMPLATE, ARG_COUNT(, __VA_ARGS__))(,__VA_ARGS__) >
 
 #define make(class_name, ...) [&]() -> auto { WrapperClass <CLASS_TYPE(class_name, __VA_ARGS__)> ret; ret.o.setup(__VA_ARGS__); return ret; }()
-//#define make(class_name, ...) WrapperClass < int > ()
 
 #define exec(dummy)
 

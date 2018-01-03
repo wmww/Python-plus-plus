@@ -154,7 +154,7 @@ class EmptyClass {};
 		}
 
 #define margs METHOD_ARGS(
-#define METHOD_ARGS(...) CAT(METHOD_ARGS, ARG_COUNT(__VA_ARGS__))(__VA_ARGS__)) blockBeforeColonMacro
+#define METHOD_ARGS(...) CAT(METHOD_ARGS, ARG_COUNT(__VA_ARGS__))(__VA_ARGS__)) { auto& self = *this; CAT(dummyLabel, __LINE__)
 #define METHOD_ARGS_1(empty)
 #define METHOD_ARGS_2(empty, arg) T_1 arg
 #define METHOD_ARGS_3(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(METHOD_ARGS, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
@@ -168,7 +168,7 @@ class EmptyClass {};
 #define METHOD_ARGS_11(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(METHOD_ARGS, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
 #define METHOD_ARGS_12(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(METHOD_ARGS, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
 
-#define mtop() auto& self = *this;
+#define mtop()
 
 template<typename T>
 struct WrapperClass
@@ -222,12 +222,11 @@ class WrapperClass: pass
 def members(member_vars):
 	inspect.stack()[1].frame.f_locals['member_vars'] = [i.strip().strip(',') for i in member_vars.split()][1:-1]
 def mtop():
-	#inspect.stack()[1].frame.f_locals['self'] = inspect.stack()[1].frame.f_locals['margs']
-	#print(inspect.stack()[1].frame.f_locals['self'])
 	global self
 	self = inspect.stack()[1].frame.f_locals['margs']
 def make(class_type, *argv):
 	ret = WrapperClass()
+	
 	o = class_type()
 	for i in range(len(argv)):
 		o.__dict__[class_type.member_vars[i]] = argv[i]

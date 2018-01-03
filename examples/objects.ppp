@@ -1,4 +1,3 @@
-
 #include "ppp.ppp"
 exec(open("ppp.ppp").read())
 
@@ -17,39 +16,12 @@ class Foo:
 	
 	def m1(margs):
 		mtop();
-		print(0);
+		print(self.a);
 	end
-end
-
-def another(args, a, b):
-	print(a);
-	print(b);
 end
 
 def run(args):
-	
-	var
-	a = Array(0);
-	
-	a.append(9);
-	a.append(12);
-	a.append(3);
-	
-	for i in (a):
-		print(i);
-	end
-	
-	if (1):
-		print(1);
-	elif (2):
-		print(2);
-	elif always:
-		print(3);
-	end
-	
-	for i in (range(0, 10)):
-		print(i);
-	end
+	print("Hello World!");
 	
 	var
 	foo = make(Foo, 8, 1, 0, 7);
@@ -58,11 +30,6 @@ def run(args):
 	foo.o.m0();
 	foo.o.m0();
 	foo.o.m1();
-	
-	another(8, 6);
 end
 
 end_program()
-* 
-#define comment
-

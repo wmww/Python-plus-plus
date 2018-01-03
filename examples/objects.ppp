@@ -10,12 +10,10 @@ class Foo:
 	" """)
 	
 	def m0(margs):
-		mtop();
 		self.a = self.a + 1;
 	end
 	
 	def m1(margs):
-		mtop();
 		print(self.a);
 	end
 end

@@ -168,8 +168,6 @@ class EmptyClass {};
 #define METHOD_ARGS_11(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(METHOD_ARGS, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
 #define METHOD_ARGS_12(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(METHOD_ARGS, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
 
-#define mtop()
-
 template<typename T>
 struct WrapperClass
 {
@@ -221,12 +219,28 @@ def Array(dummy): return []
 class WrapperClass: pass
 def members(member_vars):
 	inspect.stack()[1].frame.f_locals['member_vars'] = [i.strip().strip(',') for i in member_vars.split()][1:-1]
-def mtop():
-	global self
-	self = inspect.stack()[1].frame.f_locals['margs']
 def make(class_type, *argv):
+	if not hasattr(class_type, '__ppp_flag__'):
+		blacklist = {
+			}
+		mods = []
+		for key, val in class_type.__dict__.items():
+			if inspect.isfunction(val):
+				if not key in blacklist:
+					def make_func(val):
+						def func(_self, *args):
+							global self
+							self = _self
+							ret = val(None, *args)
+							self = None
+							return ret
+						return func
+					a = (key, make_func(val))
+					mods.append(a)
+		for mod in mods:
+			setattr(class_type, mod[0], mod[1])
+		class_type.__ppp_flag__ = True
 	ret = WrapperClass()
-	
 	o = class_type()
 	for i in range(len(argv)):
 		o.__dict__[class_type.member_vars[i]] = argv[i]

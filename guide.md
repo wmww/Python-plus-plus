@@ -171,26 +171,24 @@ class MyClass:
 		bar,
 	" """)
 	
-	def method_name(margs):
-		mtop();
+	def method_name(args):
 		print(self.foo);
 	end
-end
+end_class
 ```
 To construct and use an instance of this class,
 ```
 var
 my_object = make(MyClass, 8, 1);
 
-my_object.o.mathod_name();
+my_object.mathod_name();
+print(my_object.self.bar);
 ```
 Note that the arguments to make are the name of the class followed by the values of the member variables in order (so `foo` starts as 8 and `bar` starts as 1). Classes can be constructed with their member variables being any type, but once constructed the types can't be changed (and if a variable is initialized to an object of a class, you cannot assign to it an object with different member variable types).
 
 ### Notes about classes
-* Instead of `args`, the argument list of methods start with `margs` (method args)
-* Every method must start with a call to `mtop()` (method top)
 * When accessing object data inside a method, use `self.some_var`
-* When accessing data outside the class, use `obj_name.o.some_var` or `obj_name.o.some_method()`, the `.o` stands for object and is required
+* When accessing data outside the class, use `obj_name.self.some_var`, but to call methods its just `obj_name.some_method()`
 * Objects are pass-by-reference
 * They use automatic memory management in both languages
 
@@ -200,5 +198,6 @@ There are a lot of features I want to implement in the future. These include (in
 * Better string support (concatenation, converting between other types and strings, etc.)
 * User input
 * File IO
+* FFI
 If you have any feature suggestions or problems, feel free to open up a GitHub issue.
 

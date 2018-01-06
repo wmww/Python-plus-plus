@@ -52,7 +52,6 @@ struct IntRange
 #define null 0
 #define end_program() int main(int argc, char ** argv) {run(); return 0;}
 
-
 #define comment /// block
 
 //#define blockBeforeColonMacro {class LocalDummyClass{const int a; LocalDummyClass()
@@ -112,6 +111,11 @@ struct IntRange
 #define len(ary) ary.size()
 #define append push_back
 
+#define comment /// strings
+
+inline std::string str(const char * val) { return std::string(val); }
+inline std::string str(int val) { return std::to_string(val); }
+inline std::string str(double val) { return std::to_string(val); }
 
 #define comment /// class
 
@@ -145,20 +149,25 @@ class EmptyClass {};
 #define CLASS_DATA_7(empty, name, ...) CAT(M, ARG_COUNT(,__VA_ARGS__)) name; CAT(CLASS_DATA, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
 
 #define comment // must use constructor because brace initialization doesn't work if the class has a base class
-#define members(a, ...) \
-	EmptyClass { \
-	public: \
-		struct __Funcs__ {}; \
-		struct __Data__: __Funcs__ { \
-			CAT(CLASS_DATA, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__) \
-			void setup(CAT(CLASS_CONSTRUCT_A, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)) { \
-				CAT(CLASS_CONSTRUCT_B, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__) \
-			} \
-		}; \
-		struct __Wrapper__: __Funcs__ { \
-			std::shared_ptr<__Data__> __ptr__; \
-		};
-		
+
+#define members(a, ...) EmptyClass { \
+	struct __Funcs__; \
+	struct __Data__: __Funcs__ { \
+		CAT(CLASS_DATA, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__) \
+		__Data__(CAT(CLASS_CONSTRUCT_A, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)): __Funcs__(*this) { \
+			CAT(CLASS_CONSTRUCT_B, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__) \
+		} \
+	}; \
+	struct __Wrapper__: __Funcs__ { \
+		std::shared_ptr<__Data__> __ptr__; \
+		__Wrapper__(__Data__* data): __ptr__(data), __Funcs__(*data) {} \
+		__Wrapper__(): __Funcs__(*((__Data__*)nullptr)) {} \
+	}; \
+	struct __Funcs__ { \
+		__Data__& self; \
+		__Funcs__(__Data__& ref): self(ref) {} \
+
+#define end_class };};
 
 #define margs METHOD_ARGS(
 #define METHOD_ARGS(...) CAT(METHOD_ARGS, ARG_COUNT(__VA_ARGS__))(__VA_ARGS__)) { auto& self = *this; CAT(dummyLabel, __LINE__)
@@ -175,26 +184,18 @@ class EmptyClass {};
 #define METHOD_ARGS_11(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(METHOD_ARGS, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
 #define METHOD_ARGS_12(empty, arg, ...) , CAT(T, ARG_COUNT(,__VA_ARGS__)) arg CAT(METHOD_ARGS, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)
 
-template<typename T>
-struct WrapperClass
-{
-public:
-	std::shared_ptr<T> ptr;
-	T o;
-	
-	WrapperClass(): ptr(std::make_shared<T>()), o(*ptr) {}
-};
-
 #define MAKE_TEMPLATE_1(empty)
 #define MAKE_TEMPLATE_2(empty, arg) decltype(arg)
-#define MAKE_TEMPLATE_3(empty, arg, ...) decltype(arg), CAT(MAKE_TEMPLATE, ARG_COUNT(, __VA_ARGS__))(,__VA_ARGS__)
-#define MAKE_TEMPLATE_4(empty, arg, ...) decltype(arg), CAT(MAKE_TEMPLATE, ARG_COUNT(, __VA_ARGS__))(,__VA_ARGS__)
-#define MAKE_TEMPLATE_5(empty, arg, ...) decltype(arg), CAT(MAKE_TEMPLATE, ARG_COUNT(, __VA_ARGS__))(,__VA_ARGS__)
-#define MAKE_TEMPLATE_6(empty, arg, ...) decltype(arg), CAT(MAKE_TEMPLATE, ARG_COUNT(, __VA_ARGS__))(,__VA_ARGS__)
+#define MAKE_TEMPLATE_3(empty, arg, ...) CAT(MAKE_TEMPLATE, ARG_COUNT(, __VA_ARGS__))(,__VA_ARGS__), decltype(arg)
+#define MAKE_TEMPLATE_4(empty, arg, ...) CAT(MAKE_TEMPLATE, ARG_COUNT(, __VA_ARGS__))(,__VA_ARGS__), decltype(arg)
+#define MAKE_TEMPLATE_5(empty, arg, ...) CAT(MAKE_TEMPLATE, ARG_COUNT(, __VA_ARGS__))(,__VA_ARGS__), decltype(arg)
+#define MAKE_TEMPLATE_6(empty, arg, ...) CAT(MAKE_TEMPLATE, ARG_COUNT(, __VA_ARGS__))(,__VA_ARGS__), decltype(arg)
 
 #define CLASS_TYPE(class_name, ...) class_name < CAT(MAKE_TEMPLATE, ARG_COUNT(, __VA_ARGS__))(,__VA_ARGS__) >
 
-#define make(class_name, ...) [&]() -> auto { WrapperClass <CLASS_TYPE(class_name, __VA_ARGS__)> ret; ret.o.setup(__VA_ARGS__); return ret; }()
+#define make(class_name, ...) [&]() -> auto { \
+		return CLASS_TYPE(class_name, __VA_ARGS__)::__Wrapper__( \
+			new CLASS_TYPE(class_name, __VA_ARGS__)::__Data__(__VA_ARGS__)); } ();
 
 #define exec(dummy)
 

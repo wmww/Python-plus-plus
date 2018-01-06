@@ -1,6 +1,7 @@
 #include "ppp.ppp"
 exec(open("ppp.ppp").read())
 
+/*
 class Foo:
 	members(""" ",
 		a,
@@ -17,10 +18,46 @@ class Foo:
 		print(self.a);
 	end
 end
+*/
+
+#include <string.h>
+
+template<typename T0 = void, typename T1 = void>
+struct Bar {
+	struct __Funcs__;
+	struct __Data__: __Funcs__ {
+		T0 a;
+		T1 b;
+		__Data__(T0 a_in, T1 b_in): __Funcs__(*this) {a = a_in; b = b_in;}
+	};
+	struct __Wrapper__: __Funcs__ {
+		std::shared_ptr<__Data__> __ptr__;
+		__Wrapper__(__Data__* data): __ptr__(data), __Funcs__(*data) {}
+		__Wrapper__(): __Funcs__(*((__Data__*)nullptr)) {}
+	};
+	struct __Funcs__ {
+		__Data__& self;
+		__Funcs__(__Data__& ref): self(ref) {}
+		template<typename T>
+		auto meth(T b) {
+			print(self.a);
+			print(b);
+		}
+	};
+};
 
 def run(args):
 	print("Hello World!");
 	
+	auto data = [&]() -> auto {
+		auto ret = Bar<decltype(2), decltype(true)>::__Wrapper__(
+			   new Bar<decltype(2), decltype(true)>::__Data__(2, true));
+		return ret;
+		}();
+	print(data.self.a);
+	data.meth("hey");
+	
+	/*
 	var
 	foo = make(Foo, 8, 1, 0, 7);
 	
@@ -28,6 +65,11 @@ def run(args):
 	foo.o.m0();
 	foo.o.m0();
 	foo.o.m1();
+	
+	print(foo.o.a)
+	print(foo.o.a)
+	print(foo.o.a)
+	*/
 end
 
 end_program()

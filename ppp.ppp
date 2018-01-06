@@ -148,10 +148,17 @@ class EmptyClass {};
 #define members(a, ...) \
 	EmptyClass { \
 	public: \
-		CAT(CLASS_DATA, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__) \
-		void setup(CAT(CLASS_CONSTRUCT_A, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)) { \
-			CAT(CLASS_CONSTRUCT_B, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__) \
-		}
+		struct __Funcs__ {}; \
+		struct __Data__: __Funcs__ { \
+			CAT(CLASS_DATA, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__) \
+			void setup(CAT(CLASS_CONSTRUCT_A, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__)) { \
+				CAT(CLASS_CONSTRUCT_B, ARG_COUNT(,__VA_ARGS__))(,__VA_ARGS__) \
+			} \
+		}; \
+		struct __Wrapper__: __Funcs__ { \
+			std::shared_ptr<__Data__> __ptr__; \
+		};
+		
 
 #define margs METHOD_ARGS(
 #define METHOD_ARGS(...) CAT(METHOD_ARGS, ARG_COUNT(__VA_ARGS__))(__VA_ARGS__)) { auto& self = *this; CAT(dummyLabel, __LINE__)

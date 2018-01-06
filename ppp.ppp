@@ -224,7 +224,6 @@ def end_program():
 		globals()[mod[0]] = mod[1]
 	globals()['run']()
 def Array(dummy): return []
-class WrapperClass: pass
 def members(member_vars):
 	inspect.stack()[1].frame.f_locals['member_vars'] = [i.strip().strip(',') for i in member_vars.split()][1:-1]
 def make(class_type, *argv):
@@ -248,11 +247,10 @@ def make(class_type, *argv):
 		for mod in mods:
 			setattr(class_type, mod[0], mod[1])
 		class_type.__ppp_flag__ = True
-	ret = WrapperClass()
-	o = class_type()
+	ret = class_type()
 	for i in range(len(argv)):
-		o.__dict__[class_type.member_vars[i]] = argv[i]
-	ret.o = o
+		setattr(ret, class_type.member_vars[i], argv[i])
+	ret.self = ret
 	return ret
 self = None
 true = True
@@ -260,6 +258,7 @@ false = False
 always = True
 null = None
 _ = None
+end_class = None
 end = None
 """ */
 ccp dummy_str_3 = " """;

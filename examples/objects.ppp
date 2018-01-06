@@ -15,24 +15,10 @@ def run(args):
 	
 	var
 	data = make(Bar, 12, 5.2, str("test"));
-	//print(data.self.b);
 	data.meth();
 	print(data.self.b);
 	print(data.self.c);
 	
-	/*
-	var
-	foo = make(Foo, 8, 1, 0, 7);
-	
-	foo.o.m1();
-	foo.o.m0();
-	foo.o.m0();
-	foo.o.m1();
-	
-	print(foo.o.a)
-	print(foo.o.a)
-	print(foo.o.a)
-	*/
 end
 
 end_program()

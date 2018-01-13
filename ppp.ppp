@@ -125,7 +125,7 @@ class EmptyClass {};
 	typename M_2  = EmptyClass, \
 	typename M_3  = EmptyClass, \
 	typename M_4  = EmptyClass, \
-	typename M_5  = EmptyClass> class
+	typename M_5  = EmptyClass> struct
 
 #define CLASS_CONSTRUCT_A_2(empty, end)
 #define CLASS_CONSTRUCT_A_3(empty, name, end) M_2 arg_2
@@ -178,9 +178,9 @@ class EmptyClass {};
 
 #define CLASS_TYPE(class_name, ...) class_name < CAT(MAKE_TEMPLATE, ARG_COUNT(, __VA_ARGS__))(,__VA_ARGS__) >
 
-#define make(class_name, ...) [&]() -> auto { \
-		return CLASS_TYPE(class_name, __VA_ARGS__)::__Wrapper__( \
-			new CLASS_TYPE(class_name, __VA_ARGS__)::__Data__(__VA_ARGS__)); } ();
+#define make(class_name, ...) ( \
+		CLASS_TYPE(class_name, __VA_ARGS__)::__Wrapper__( \
+			new CLASS_TYPE(class_name, __VA_ARGS__)::__Data__(__VA_ARGS__)))
 
 #define exec(dummy)
 

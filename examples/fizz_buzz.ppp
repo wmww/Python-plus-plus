@@ -2,10 +2,7 @@
 exec(open("ppp.ppp").read())
 
 def fizzBuzz(args, iters, abc):
-	var
-	i=0;
-	
-	while (i < iters):
+	for i in (range(0, iters)):
 		if (i % 3 == 0 and i % 5 == 0):
 			print("FizzBuzz");
 		elif (i % 3 == 0):
@@ -15,13 +12,11 @@ def fizzBuzz(args, iters, abc):
 		elif always:
 			print(i);
 		end
-		
-		i = i + 1;
 	end
 end
 
 def run(args):
-	fizzBuzz(_, 28, 8);
+	fizzBuzz(28, 8);
 end
 
-END(run(_))
+end_program()

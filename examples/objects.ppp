@@ -5,30 +5,28 @@ class Bar:
 	members(""" ",
 		a, b, c,
 	" """)
-	def meth(args):
+	
+	def m0(args):
 		print(self.a);
 	end
+	
 end_class
 
-struct Bar1;
-decltype(make(Bar, *(Bar1*)(nullptr), 1, 1)) Bar1;
-//decltype(( Bar < decltype(1), decltype(1), decltype(( Bar1 < decltype(1), decltype(1) >::__Wrapper__( new Bar1 < decltype(1), decltype(1) >::__Data__(1, 1)))) >::__Wrapper__( new Bar < decltype(1), decltype(1), decltype(( Bar1 < decltype(1), decltype(1) >::__Wrapper__( new Bar1 < decltype(1), decltype(1) >::__Data__(1, 1)))) >::__Data__(( Bar1 < decltype(1), decltype(1) >::__Wrapper__( new Bar1 < decltype(1), decltype(1) >::__Data__(1, 1))), 1, 1)))) Bar1;
-
+def add(args, a, b):
+	return a + b;
+end
 
 def run(args):
 	print("Hello World!");
 	
 	var
 	data = make(Bar, 12, 5.2, str("test"));
-	data.meth();
+	
+	data.m0();
 	print(data.self.b);
 	print(data.self.c);
 	
-	//var
-	//a = make(Bar, (Bar<Bar1, int, int>::Wrapper()), 8, 9);
-	
-	auto a = ( Bar < decltype(9), decltype(8), decltype((Bar<Bar1, int, int>::Wrapper())) >::__Wrapper__( new Bar < decltype(9), decltype(8), decltype((Bar<Bar1, int, int>::Wrapper())) >::__Data__((Bar<Bar1, int, int>::Wrapper()), 8, 9)));
-
+	print(add(2, 3));
 end
 
 end_program()

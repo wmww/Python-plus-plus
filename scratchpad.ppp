@@ -10,16 +10,14 @@ class Foo:
 		foo,
 	" """)
 	
-	def m0(margs):
-		mtop();
+	def m0(args):
 		self.a = self.a + 1;
 	end
 	
-	def m1(margs):
-		mtop();
+	def m1(args):
 		print(0);
 	end
-end
+end_class
 
 def another(args, a, b):
 	print(a);
@@ -27,6 +25,17 @@ def another(args, a, b):
 end
 
 def run(args):
+	
+	#define CHECK_IF_THING(a) CHECK_IF_THING_INTERNAL(IS_##a##_A_THING, A_THING)
+	#define IS__A_THING dummy, NOTHING
+	#define CHECK_IF_THING_INTERNAL_2(a, b, ...) b
+	#define CHECK_IF_THING_INTERNAL(...) CHECK_IF_THING_INTERNAL_2(__VA_ARGS__)
+	
+	#define abc_A_THING print("a thing!");
+	#define abc_NOTHING print("not a thing!");
+	
+	CAT(abc, CHECK_IF_THING(fasjdsad))
+	CAT(abc, CHECK_IF_THING())
 	
 	var
 	a = Array(0);
@@ -54,15 +63,13 @@ def run(args):
 	var
 	foo = make(Foo, 8, 1, 0, 7);
 	
-	foo.o.m1();
-	foo.o.m0();
-	foo.o.m0();
-	foo.o.m1();
+	foo.m1();
+	foo.m0();
+	foo.m0();
+	foo.m1();
 	
 	another(8, 6);
 end
 
 end_program()
-* 
-#define comment
 

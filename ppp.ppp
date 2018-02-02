@@ -18,7 +18,9 @@ dummy_str_0 = """ ";
 
 #include <iostream>
 #include <vector>
-#include <memory>
+#include <memory> // for shared_ptr
+#include <fstream> // for file loading
+#include <sstream> // for file loading
 
 struct IntIter
 {
@@ -36,6 +38,47 @@ struct IntRange
 	IntIter begin () const { return IntIter{low}; }
 	IntIter end () const { return IntIter{heigh}; }
 };
+
+#define comment /// stdlib
+
+std::string run_cmd(std::string cmd) {
+	std::string result = "";
+	FILE* pipe = popen(cmd.c_str(), "r");
+	if (!pipe) return "";
+	try {
+		while (!feof(pipe)) {
+			char c;
+			if ((c = getc(pipe)) != EOF)
+				result += c;
+		}
+	} catch (...) {}
+	pclose(pipe);
+	return result;
+}
+
+std::string read_file(const std::string& path) {
+	std::fstream file;
+	file.open(path);
+	if (!file.is_open()) {
+		return "";
+	} else {
+		std::stringstream stream;
+		stream << file.rdbuf(); //read the file
+		file.close();
+		return stream.str();
+	}
+}
+
+void write_file(const std::string& path, const std::string& contents) {
+	std::ofstream file;
+	file.open(path);
+	if (!file.is_open()) {
+		// ignore error
+	} else {
+		file << contents;
+		file.close();
+	}
+}
 
 #define comment /// macro helpers
 

@@ -1,0 +1,10 @@
+#define comment // > Hello World!
+
+#include "ppp.ppp"
+exec(open("ppp.ppp").read())
+
+def run(args):
+	print("Hello World!");
+end
+
+end_program()

@@ -41,6 +41,13 @@ struct IntRange
 
 #define comment /// stdlib
 
+extern std::vector<std::string> cmd_line_args;
+void process_cmd_line_args(int argc, char ** argv) {
+	for (int i = 0; i < argc; i++) {
+		cmd_line_args.push_back(argv[i]);
+	}
+}
+
 std::string run_cmd(std::string cmd) {
 	std::string result = "";
 	FILE* pipe = popen(cmd.c_str(), "r");
@@ -93,7 +100,12 @@ void write_file(const std::string& path, const std::string& contents) {
 #define print(arg) {std::cout << arg << std::endl;}
 #define var auto
 #define null 0
-#define end_program() int main(int argc, char ** argv) {run(); return 0;}
+#define end_program() \
+	std::vector<std::string> cmd_line_args; \
+	int main(int argc, char ** argv) { \
+		process_cmd_line_args(argc, argv); \
+		run(); return 0; \
+	}
 
 #define comment /// block
 

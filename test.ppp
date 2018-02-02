@@ -1,0 +1,10 @@
+#include "ppp.ppp"
+exec(open("ppp.ppp").read())
+
+def test_file(args, 
+
+def run(args):
+	print("Welcome to the Python++ test system");
+end
+
+end_program()

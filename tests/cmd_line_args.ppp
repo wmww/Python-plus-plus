@@ -1,0 +1,18 @@
+#define comment // $ abc "test with space" -m 8
+#define comment // > 4
+#define comment // > abc
+#define comment // > test with space
+#define comment // > -m
+#define comment // > 8
+
+#include "ppp.ppp"
+exec(open("ppp.ppp").read())
+
+def run(args):
+	print(len(cmd_line_args));
+	if (len(cmd_line_args) >= 1):
+		print(cmd_line_args[0]);
+	end
+end
+
+end_program()

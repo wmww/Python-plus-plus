@@ -1,10 +1,63 @@
 #include "ppp.ppp"
 exec(open("ppp.ppp").read())
 
-def test_file(args, 
+class TestResult:
+	members(""" "
+		file_path
+		correct_output_parsed
+		cpp_compiled
+		cpp_correct
+		py_correct
+		cpp_output
+		py_output
+	" """)
+	
+	def to_string_short(args):
+		var
+		ret = "";
+		ret += self.file_path;
+		ret = " - ";
+		if (self.cpp_compiled && self.cpp_correct):
+			ret += " . ";
+		elif always:
+			ret += " X ";
+		end
+		if (self.py_correct):
+			ret += " . ";
+		elif always:
+			ret += " X ";
+		end
+	end
+end_class
+
+def run_file_py(args, path, arguments):
+	var
+	cmd = "python3 " + path;
+	for i in (arguments):
+		cmd += " " + i;
+	end
+	var
+	ret = run_cmd(cmd);
+	return ret;
+end
+
+def test_file(args, path, arguments):
+	var
+	result = make(TestResult, path, false, false, false, false, "", "");
+	var
+	py_output = run_file_py(path, arguments);
+	result.self.py_correct = true;
+	result.self.py_output = py_output;
+	return result;
+end
 
 def run(args):
 	print("Welcome to the Python++ test system");
+	for i in (cmd_line_args):
+		var
+		result = test_file(Array(""))
+		print(result.to_string_short())
+	end
 end
 
 end_program()

@@ -1,62 +1,66 @@
 #include "ppp.ppp"
 exec(open("ppp.ppp").read())
 
-class TestResult:
-	members(""" "
-		file_path
-		correct_output_parsed
-		cpp_compiled
-		cpp_correct
-		py_correct
-		cpp_output
-		py_output
-	" """)
-	
-	def to_string_short(args):
-		var
-		ret = "";
-		ret += self.file_path;
-		ret = " - ";
-		if (self.cpp_compiled && self.cpp_correct):
-			ret += " . ";
-		elif always:
-			ret += " X ";
-		end
-		if (self.py_correct):
-			ret += " . ";
-		elif always:
-			ret += " X ";
-		end
-	end
-end_class
-
 def run_file_py(args, path, arguments):
 	var
 	cmd = "python3 " + path;
 	for i in (arguments):
 		cmd += " " + i;
 	end
+	cmd += " 2>&1";
 	var
 	ret = run_cmd(cmd);
 	return ret;
 end
 
-def test_file(args, path, arguments):
+def compile_file_cpp(args, in_file, out_file):
 	var
-	result = make(TestResult, path, false, false, false, false, "", "");
+	cmd = "g++ -x c++ -std=c++14 " + in_file + " -o " + out_file + " && printf $";
 	var
-	py_output = run_file_py(path, arguments);
-	result.self.py_correct = true;
-	result.self.py_output = py_output;
-	return result;
+	output = run_cmd(cmd);
+	if (len(output) > 0 && output[len(output) - 1] == '$'):
+		output = "";
+	end
+	return output;
 end
 
+def run_file_cpp(args, path, arguments):
+	var
+	tmp_bin_path = str("tmp_bin");
+	var
+	compile_output = compile_file_cpp(path, tmp_bin_path);
+	if (compile_output == ""):
+		var
+		cmd = "./" + tmp_bin_path;
+		for i in (arguments):
+			cmd += " " + i;
+		end
+		var
+		cmd_output = run_cmd(cmd);
+		run_cmd("rm " + tmp_bin_path);
+		return cmd_output;
+	elif always:
+		run_cmd("rm " + tmp_bin_path);
+		return "compile error: \n" + compile_output;
+	end
+end
+
+def test_file(args, path):
+	print("processing '" + path + "'");
+	// var
+	// expected_output = parse_expected_output(path);
+	print("");
+	var
+	py_output = run_file_py(path, Array(str("")));
+	print("py output: " + py_output);
+	var
+	cpp_output = run_file_cpp(path, Array(str("")));
+	print("cpp output: " + cpp_output);
+end
 def run(args):
 	print("Welcome to the Python++ test system");
-	for i in (cmd_line_args):
-		var
-		result = test_file(Array(""))
-		print(result.to_string_short())
+	for i in (range(1, len(cmd_line_args))):
+		test_file(cmd_line_args[i]);
 	end
 end
 

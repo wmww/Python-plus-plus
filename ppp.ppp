@@ -163,7 +163,7 @@ void write_file(const std::string& path, const std::string& contents) {
 
 #define comment /// array
 
-#define Array(type) std::vector<decltype(type)>();
+#define Array(type) std::vector<decltype(type)>()
 #define len(ary) ary.size()
 #define append push_back
 

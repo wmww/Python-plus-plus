@@ -6,7 +6,7 @@ Python++ is a framework for creating Python/C++ [polyglots](https://en.wikipedia
 
 ## Overview
 Python++ consists of 3 things:
-1. [ppp.ppp](ppp.ppp): This is itself a polyglot that can be copied to the top of your Python++ source, or placed alongside it and imported.
+1. [ppp](ppp): This is itself a polyglot that can be copied to the top of your Python++ source, or placed alongside it and imported.
 2. [guide.md](guide.md): A comprehensive guide to writing Python++ programs.
 4. [examples](examples): examples of programs written in Python++.
 

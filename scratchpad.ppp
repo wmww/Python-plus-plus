@@ -1,6 +1,6 @@
 
-#include "ppp.ppp"
-exec(open("ppp.ppp").read())
+#include "ppp"
+exec(open("ppp").read())
 
 class Foo:
 	members(""" ",

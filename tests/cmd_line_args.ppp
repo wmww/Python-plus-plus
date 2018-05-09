@@ -5,8 +5,8 @@
 #define comment // > -m
 #define comment // > 8
 
-#include "ppp.ppp"
-exec(open("ppp.ppp").read())
+#include "ppp"
+exec(open("ppp").read())
 
 def run(args):
 	print(len(cmd_line_args));

@@ -1,5 +1,5 @@
-#include "ppp.ppp"
-exec(open("ppp.ppp").read())
+#include "ppp"
+exec(open("ppp").read())
 
 def run_file_py(args, path, arguments):
 	var

@@ -4,10 +4,10 @@ This is a guide to writing code in [Python++](https://github.com/wmww/Python-plu
 
 ## Getting started
 
-You must download [ppp.ppp](ppp.ppp). It contains most of the boilerplate needed for both C++ and Python. Hello world in Python++ looks like this:
+You must download [ppp](ppp). It contains most of the boilerplate needed for both C++ and Python. Hello world in Python++ looks like this:
 ```
-#include "ppp.ppp"
-exec(open("ppp.ppp").read())
+#include "ppp"
+exec(open("ppp").read())
 
 #define comment // your functions here
 
@@ -18,7 +18,7 @@ end
 
 end_program()
 ```
-Note that if you wish you can copy/paste the entirety of `ppp.ppp` into the top of this file. and remove the first two lines. Importing from an external file is generally recommended for readability and easy updating.
+Note that if you wish you can copy/paste the entirety of `ppp` into the top of this file. and remove the first two lines. Importing from an external file is generally recommended for readability and easy updating.
 
 ## Errors
 Depending on what you fuck up, you might get errors in C++, Python, both or just get different output. Make sure you test with both languages. The provided test script is useful for this.

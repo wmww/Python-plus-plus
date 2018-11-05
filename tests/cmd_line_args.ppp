@@ -1,7 +1,6 @@
-#define comment // $ abc "test with space" -m 8
-#define comment // > 4
+#define comment // $ abc -m 8
+#define comment // > 3
 #define comment // > abc
-#define comment // > test with space
 #define comment // > -m
 #define comment // > 8
 

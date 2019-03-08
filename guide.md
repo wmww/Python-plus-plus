@@ -52,14 +52,14 @@ def function_name(args, first_arg, second_arg):
 	#define comment // your code here
 end
 ```
-Under the hood, templates are always used in C++ so no need to worry about types. You can have at most 12 function arguments (not counting the initial `arg` keyword)
+Under the hood, templates are always used in C++ so no need to worry about types. You can have at most 12 function arguments (not counting the initial `args` keyword)
 
 ## Calling Functions
 Calling a function is the same way you call a function in both languages. For example:
 ```
-function_name("hay", 48.9);
+function_name("hey", 48.9);
 ```
-Note that (unlike previous), the `args` keyword in function declarations doesn't cause any trouble when calling functions. It is not an actual argument.
+Note that (unlike in previous versions), the `args` keyword in function declarations doesn't cause any trouble when calling functions. It is not an actual argument.
 
 ## Boolean values
 In Python++, use `true` and `false` (not capitalized) for Boolean literals.
@@ -199,5 +199,6 @@ There are a lot of features I want to implement in the future. These include (in
 * User input
 * File IO
 * FFI
+
 If you have any feature suggestions or problems, feel free to open up a GitHub issue.
 
